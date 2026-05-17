@@ -1,0 +1,12 @@
+metric,value
+total_utterances,2864
+total_switches,662
+improvements,280
+regressions,84
+ties,298
+pll_prefers_method_in_reg,69
+ctc_prefers_greedy_in_reg,84
+mode_greedy_was_perfect,29
+mode_lm_hallucination,4
+mode_near_tie,47
+mode_other,4

@@ -1,0 +1,20 @@
+{
+  "split": "train-clean-100",
+  "num_utterances": 28539,
+  "num_paths_oversample": 64,
+  "nbest_scale": 0.5,
+  "max_keep": 16,
+  "mean_hypotheses_per_utt": 16.0,
+  "mean_greedy_wer": 0.010850408190679537,
+  "mean_top1_nbest_wer": 0.010850408190679537,
+  "mean_oracle_wer": 0.010780718330756155,
+  "mean_wer_std_per_utt": 0.08665719996951968,
+  "utterances_with_zero_variance": 0,
+  "total_edits_greedy": 10743,
+  "total_edits_top1": 10743,
+  "total_edits_oracle": 10674,
+  "total_ref_words": 990101,
+  "elapsed_seconds": 3953.6168484687805,
+  "output_jsonl": "/content/drive/MyDrive/rbpo_results/reranker_training_data/train-clean-100_G16.jsonl",
+  "output_size_bytes": 274377788
+}

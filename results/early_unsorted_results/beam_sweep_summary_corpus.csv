@@ -1,0 +1,2 @@
+G,corpus_oracle_wer,corpus_greedy_wer,mean_oracle_wer,mean_greedy_wer,abs_gap_corpus,rel_gap_corpus,mean_unique_candidates,mean_pairwise_wer,mean_logprob_spread,num_recoverable,pct_recoverable,mean_improvement_on_recoverable
+16,0.044418,0.060218,0.045924,0.066544,0.0158,0.262386,15.53,0.190554,16.5257,665,0.2322,0.088806

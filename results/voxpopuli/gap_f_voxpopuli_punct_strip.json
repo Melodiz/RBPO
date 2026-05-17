@@ -1,0 +1,24 @@
+{
+  "n_utts": 1842,
+  "punct_strip_regex": "[.,;?!:\"\\-] then collapse whitespace; apostrophes preserved",
+  "raw": {
+    "greedy_pct": 21.931326604181685,
+    "oracle_pct": 21.5077505407354,
+    "mbr_pll_tau10_pct": 21.967375630857966
+  },
+  "punct_strip": {
+    "greedy_pct": 18.288121845710165,
+    "oracle_pct": 17.974945926459984,
+    "mbr_pll_tau10_pct": 18.326423936553713
+  },
+  "diagnostics": {
+    "mbr_picks_oracle_count": 1658,
+    "mbr_picks_oracle_pct": 90.01085776330075
+  },
+  "gaps_pp": {
+    "raw_greedy_minus_oracle": 0.4235760634462835,
+    "raw_mbr_minus_greedy": 0.03604902667628096,
+    "strip_greedy_minus_oracle": 0.31317591925018107,
+    "strip_mbr_minus_greedy": 0.03830209084354763
+  }
+}

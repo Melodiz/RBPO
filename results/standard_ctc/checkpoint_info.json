@@ -1,0 +1,21 @@
+{
+  "checkpoint_path": "/content/standard_ctc_model/exp/pretrained.pt",
+  "bpe_path": "/content/standard_ctc_model/data/lang_bpe_500/bpe.model",
+  "recipe": "zipformer",
+  "model_size": "small",
+  "architecture": {
+    "num_encoder_layers": "2,2,2,2,2,2",
+    "encoder_dim": "192,256,256,256,256,256",
+    "encoder_unmasked_dim": "192,192,192,192,192,192",
+    "feedforward_dim": "512,768,768,768,768,768"
+  },
+  "parameter_count_M": 22.1,
+  "parameter_count_full_with_aed_M": 46.3,
+  "vocab_size": 500,
+  "use_cr_ctc": false,
+  "ctc_type": "standard CTC",
+  "model_url": "https://huggingface.co/Zengwei/icefall-asr-librispeech-zipformer-small-ctc-attention-decoder-2024-07-09",
+  "training_data": "LibriSpeech 960h",
+  "notes": "Zengwei CTC/AED Small. Standard CTC head on Zipformer-Small encoder, size-matched to CR-CTC-small (22.1M encoder). Encoder shaped jointly by AED loss (90%) + CTC loss (10%) during training; we use only the CTC head for inference (159 attention-decoder keys ignored on load). This is Option B from the experiment plan. An earlier attempt with desh2608's pure standard-CTC Zipformer (86M, zipformer_ctc recipe) was abandoned because that recipe uses a different CTCModel class incompatible with our forward_encoder/ctc_output API.",
+  "stale_info": "Earlier checkpoint_info.json saved during the failed desh2608 attempt was overwritten on 2026-05-10 to reflect the actually-used model."
+}

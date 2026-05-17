@@ -1,0 +1,33 @@
+{
+  "mode": "mwer_clipped",
+  "run_name": "exp_G2_clipped_fulldata",
+  "num_epochs": 1,
+  "baseline_eval": {
+    "dev-clean": {
+      "wer": 0.02852368277850757,
+      "num_utts": 2703
+    },
+    "dev-other": {
+      "wer": 0.06665961809258399,
+      "num_utts": 2864
+    }
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "steps": 7133,
+      "time_seconds": 17136.5,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.10256216997502955,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.1556794042340443,
+          "num_utts": 2864
+        }
+      }
+    }
+  ],
+  "first_step_rho_ok": true
+}

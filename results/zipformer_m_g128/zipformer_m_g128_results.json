@@ -1,0 +1,61 @@
+{
+  "experiment": "E16b_zipformer_m_g128",
+  "model_config": "Zipformer-M CR-CTC",
+  "model_dir": "/content/icefall-asr-librispeech-zipformer-medium-cr-ctc",
+  "n_utterances": 2864,
+  "G": 128,
+  "avg_candidates": 109.74860335195531,
+  "wers": {
+    "greedy": 0.04775457329041376,
+    "oracle": 0.02726309177985397,
+    "roberta_interp_a0.7": 0.04804899112820916,
+    "roberta_interp_a0.8": 0.047126481903116905,
+    "mbr_cer_pll_tau10": 0.0443196985161341,
+    "mbr_cer_pll_tau50": 0.046145089110465574,
+    "mbr_cer_ctc_tau_inf": 0.04694983120043966
+  },
+  "oracle_gap_pp": 2.0491481510559786,
+  "oracle_gap_relative": 42.909987669543774,
+  "bootstrap": {
+    "roberta_interp_a0.7": {
+      "wer": 0.04804899112820916,
+      "delta_pp": 0.02944178377954007,
+      "p_value": 0.8061,
+      "ci_lower": -0.03869426244251681,
+      "ci_upper": 0.09807086295409359
+    },
+    "roberta_interp_a0.8": {
+      "wer": 0.047126481903116905,
+      "delta_pp": -0.06280913872968516,
+      "p_value": 0.0007,
+      "ci_lower": -0.10322000154871247,
+      "ci_upper": -0.023593229137347498
+    },
+    "mbr_cer_pll_tau10": {
+      "wer": 0.0443196985161341,
+      "delta_pp": -0.34348747742796587,
+      "p_value": 0.0,
+      "ci_lower": -0.41953098250250903,
+      "ci_upper": -0.2694521943985076
+    },
+    "mbr_cer_pll_tau50": {
+      "wer": 0.046145089110465574,
+      "delta_pp": -0.16094841799481827,
+      "p_value": 0.0,
+      "ci_lower": -0.21614908798106525,
+      "ci_upper": -0.10645148431130252
+    },
+    "mbr_cer_ctc_tau_inf": {
+      "wer": 0.04694983120043966,
+      "delta_pp": -0.08047420899740948,
+      "p_value": 0.0007,
+      "ci_lower": -0.13247043743708492,
+      "ci_upper": -0.02933248223101081
+    }
+  },
+  "spearman": {
+    "ctc": -0.2881905257612368,
+    "roberta_pll": -0.4594467685477485
+  },
+  "n_bootstrap": 10000
+}

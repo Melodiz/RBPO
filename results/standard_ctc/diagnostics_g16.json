@@ -1,0 +1,19 @@
+{
+  "G": 16,
+  "oversample": 64,
+  "nbest_scale": 1.0,
+  "num_utterances": 2864,
+  "total_ref_words": 51585,
+  "greedy_wer": 0.07052437724144615,
+  "oracle_wer": 0.04836677328680818,
+  "abs_gap_pp": 0.02215760395463797,
+  "rel_gap_pct": 31.418361737218248,
+  "recoverable_count": 905,
+  "recoverable_pct": 31.59916201117318,
+  "greedy_optimal_count": 1959,
+  "mean_unique_hyps": 12.6,
+  "mean_pairwise_wer_diversity": 0.1308,
+  "mean_logprob_spread": 8.33,
+  "spearman_rho_mean": -0.3032,
+  "nbest_path": "/content/drive/MyDrive/rbpo_results/standard_ctc/nbest_dev_other_g16.jsonl"
+}

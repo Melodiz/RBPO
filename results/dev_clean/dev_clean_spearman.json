@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "split": "dev-clean",
+    "n_bootstrap": 10000,
+    "seed": 42
+  },
+  "corpus": {
+    "CTC log-prob": {
+      "mean": -0.36514114169145273,
+      "ci_lower": -0.37350411489127144,
+      "ci_upper": -0.35676030798108666,
+      "n_utterances": 2697,
+      "n_bootstrap": 10000
+    },
+    "RoBERTa PLL": {
+      "mean": -0.4959434508362149,
+      "ci_lower": -0.5045279693466854,
+      "ci_upper": -0.48715765416776197,
+      "n_utterances": 2697,
+      "n_bootstrap": 10000
+    },
+    "Interpolated (\u03b1=0.6 CTC + 0.4 PLL)": {
+      "mean": -0.5371147493960988,
+      "ci_lower": -0.544944394806965,
+      "ci_upper": -0.5293123313369815,
+      "n_utterances": 2697,
+      "n_bootstrap": 10000
+    },
+    "GPT-2 LL": {
+      "mean": -0.4251015143702919,
+      "ci_lower": -0.4343000572676507,
+      "ci_upper": -0.415786905116919,
+      "n_utterances": 2697,
+      "n_bootstrap": 10000
+    }
+  }
+}

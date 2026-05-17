@@ -1,0 +1,192 @@
+{
+  "metadata": {
+    "n_bootstrap": 10000,
+    "seed": 42,
+    "date": "2026-05-03",
+    "metric": "per-utterance Spearman rho (score vs WER)"
+  },
+  "corpus": {
+    "CTC log-prob": {
+      "mean": -0.3473610207443977,
+      "ci_lower": -0.35562358353797063,
+      "ci_upper": -0.33891932095062355,
+      "n_utterances": 2858,
+      "n_bootstrap": 10000
+    },
+    "RoBERTa PLL": {
+      "mean": -0.48441456811637634,
+      "ci_lower": -0.49348923802234823,
+      "ci_upper": -0.4754139883664982,
+      "n_utterances": 2858,
+      "n_bootstrap": 10000
+    },
+    "Interpolated (α=0.6 CTC + 0.4 PLL)": {
+      "mean": -0.5269760032656965,
+      "ci_lower": -0.535109215229548,
+      "ci_upper": -0.518933531561803,
+      "n_utterances": 2858,
+      "n_bootstrap": 10000
+    },
+    "GPT-2 LL": {
+      "mean": -0.4005258215945773,
+      "ci_lower": -0.4101506804729576,
+      "ci_upper": -0.39093762751825534,
+      "n_utterances": 2858,
+      "n_bootstrap": 10000
+    }
+  },
+  "by_length": {
+    "short": {
+      "CTC log-prob": {
+        "mean": -0.3845204605192382,
+        "ci_lower": -0.39828856790851164,
+        "ci_upper": -0.37036162223726826,
+        "n_utterances": 1006,
+        "n_bootstrap": 10000
+      },
+      "RoBERTa PLL": {
+        "mean": -0.42534562898392425,
+        "ci_lower": -0.441579769501399,
+        "ci_upper": -0.4095458760687871,
+        "n_utterances": 1006,
+        "n_bootstrap": 10000
+      },
+      "Interpolated (α=0.6 CTC + 0.4 PLL)": {
+        "mean": -0.48515739424362286,
+        "ci_lower": -0.49952402547335606,
+        "ci_upper": -0.4707239679610804,
+        "n_utterances": 1006,
+        "n_bootstrap": 10000
+      },
+      "GPT-2 LL": {
+        "mean": -0.32425389997022863,
+        "ci_lower": -0.34052297911011703,
+        "ci_upper": -0.3078610700686147,
+        "n_utterances": 1006,
+        "n_bootstrap": 10000
+      }
+    },
+    "medium": {
+      "CTC log-prob": {
+        "mean": -0.3376117435539215,
+        "ci_lower": -0.35147117482882234,
+        "ci_upper": -0.32364139707447837,
+        "n_utterances": 961,
+        "n_bootstrap": 10000
+      },
+      "RoBERTa PLL": {
+        "mean": -0.4748490104408548,
+        "ci_lower": -0.4894728684844106,
+        "ci_upper": -0.4595698666865357,
+        "n_utterances": 961,
+        "n_bootstrap": 10000
+      },
+      "Interpolated (α=0.6 CTC + 0.4 PLL)": {
+        "mean": -0.5142264385618167,
+        "ci_lower": -0.5277406322360154,
+        "ci_upper": -0.500024005687734,
+        "n_utterances": 961,
+        "n_bootstrap": 10000
+      },
+      "GPT-2 LL": {
+        "mean": -0.3962848623716999,
+        "ci_lower": -0.4125139940949876,
+        "ci_upper": -0.37987325086570417,
+        "n_utterances": 961,
+        "n_bootstrap": 10000
+      }
+    },
+    "long": {
+      "CTC log-prob": {
+        "mean": -0.3159206828841933,
+        "ci_lower": -0.3307592441021039,
+        "ci_upper": -0.3014216145008165,
+        "n_utterances": 891,
+        "n_bootstrap": 10000
+      },
+      "RoBERTa PLL": {
+        "mean": -0.5614245049215649,
+        "ci_lower": -0.5753109111458155,
+        "ci_upper": -0.5472443644300655,
+        "n_utterances": 891,
+        "n_bootstrap": 10000
+      },
+      "Interpolated (α=0.6 CTC + 0.4 PLL)": {
+        "mean": -0.5879432898612458,
+        "ci_lower": -0.6010902579725268,
+        "ci_upper": -0.5746846794937758,
+        "n_utterances": 891,
+        "n_bootstrap": 10000
+      },
+      "GPT-2 LL": {
+        "mean": -0.49121618631655234,
+        "ci_lower": -0.5063318060547116,
+        "ci_upper": -0.4756704609422119,
+        "n_utterances": 891,
+        "n_bootstrap": 10000
+      }
+    }
+  },
+  "by_error_regime": {
+    "greedy_optimal": {
+      "CTC log-prob": {
+        "mean": -0.37947303141878613,
+        "ci_lower": -0.388218985169671,
+        "ci_upper": -0.37068971172806947,
+        "n_utterances": 2193,
+        "n_bootstrap": 10000
+      },
+      "RoBERTa PLL": {
+        "mean": -0.48660506641208645,
+        "ci_lower": -0.4966679935252079,
+        "ci_upper": -0.47630172355163164,
+        "n_utterances": 2193,
+        "n_bootstrap": 10000
+      },
+      "Interpolated (α=0.6 CTC + 0.4 PLL)": {
+        "mean": -0.5356461250547415,
+        "ci_lower": -0.5447050293102339,
+        "ci_upper": -0.5266157388361512,
+        "n_utterances": 2193,
+        "n_bootstrap": 10000
+      },
+      "GPT-2 LL": {
+        "mean": -0.40083038179606695,
+        "ci_lower": -0.4117950475183701,
+        "ci_upper": -0.3898248580421392,
+        "n_utterances": 2193,
+        "n_bootstrap": 10000
+      }
+    },
+    "recoverable": {
+      "CTC log-prob": {
+        "mean": -0.24146381862569993,
+        "ci_lower": -0.26033521599819276,
+        "ci_upper": -0.22280373367939302,
+        "n_utterances": 665,
+        "n_bootstrap": 10000
+      },
+      "RoBERTa PLL": {
+        "mean": -0.47719086471413225,
+        "ci_lower": -0.497353075822153,
+        "ci_upper": -0.45670603995794373,
+        "n_utterances": 665,
+        "n_bootstrap": 10000
+      },
+      "Interpolated (α=0.6 CTC + 0.4 PLL)": {
+        "mean": -0.49838415802753705,
+        "ci_lower": -0.5175747960442922,
+        "ci_upper": -0.47903541900388263,
+        "n_utterances": 665,
+        "n_bootstrap": 10000
+      },
+      "GPT-2 LL": {
+        "mean": -0.3995214599075594,
+        "ci_lower": -0.4201270923861892,
+        "ci_upper": -0.3783335212504685,
+        "n_utterances": 665,
+        "n_bootstrap": 10000
+      }
+    }
+  }
+}

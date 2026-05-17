@@ -1,0 +1,59 @@
+[
+  {
+    "condition": "baseline",
+    "output_beam": 8.0,
+    "nbest_scale": 1.0,
+    "oversample": 64,
+    "greedy_wer": 0.212601,
+    "oracle_wer": 0.177319,
+    "mbr_wer": 0.206281,
+    "delta_vs_greedy_pp": -0.632,
+    "gap_closed_pct": 17.91,
+    "p_value": 0.0,
+    "ci_pp": [
+      -0.767,
+      -0.4993
+    ],
+    "mean_unique": 12.75,
+    "mean_pairwise_wer": 0.2209,
+    "n_utterances": 2864
+  },
+  {
+    "condition": "wide_beam",
+    "output_beam": 20.0,
+    "nbest_scale": 1.0,
+    "oversample": 128,
+    "greedy_wer": 0.212601,
+    "oracle_wer": 0.178502,
+    "mbr_wer": 0.207308,
+    "delta_vs_greedy_pp": -0.5292,
+    "gap_closed_pct": 15.52,
+    "p_value": 0.0,
+    "ci_pp": [
+      -0.6583,
+      -0.3991
+    ],
+    "mean_unique": 13.95,
+    "mean_pairwise_wer": 0.2296,
+    "n_utterances": 2864
+  },
+  {
+    "condition": "flat_sampling",
+    "output_beam": 8.0,
+    "nbest_scale": 0.5,
+    "oversample": 256,
+    "greedy_wer": 0.212601,
+    "oracle_wer": 0.193719,
+    "mbr_wer": 0.212368,
+    "delta_vs_greedy_pp": -0.0233,
+    "gap_closed_pct": 1.23,
+    "p_value": 0.3302,
+    "ci_pp": [
+      -0.1248,
+      0.08
+    ],
+    "mean_unique": 15.31,
+    "mean_pairwise_wer": 0.3244,
+    "n_utterances": 2864
+  }
+]

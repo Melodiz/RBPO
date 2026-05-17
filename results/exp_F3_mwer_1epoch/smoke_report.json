@@ -1,0 +1,33 @@
+{
+  "mode": "mwer",
+  "run_name": "exp_F3_mwer_1epoch",
+  "num_epochs": 1,
+  "baseline_eval": {
+    "dev-clean": {
+      "wer": 0.02852368277850757,
+      "num_utts": 2703
+    },
+    "dev-other": {
+      "wer": 0.06665961809258399,
+      "num_utts": 2864
+    }
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "steps": 7132,
+      "time_seconds": 14848.3,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.10131201738524148,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.15295776420047522,
+          "num_utts": 2864
+        }
+      }
+    }
+  ],
+  "first_step_rho_ok": false
+}

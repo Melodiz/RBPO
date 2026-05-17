@@ -1,0 +1,20 @@
+{
+  "n_utterances_with_rho": 2620,
+  "corpus_mean_rho": -0.3032,
+  "corpus_median_rho": -0.3081,
+  "corpus_std_rho": 0.3092,
+  "ci_95_lo": -0.315,
+  "ci_95_hi": -0.2911,
+  "bootstrap_B": 10000,
+  "bootstrap_seed": 42,
+  "recoverable_subset": {
+    "mean_rho": -0.118,
+    "n": 903
+  },
+  "greedy_optimal_subset": {
+    "mean_rho": -0.4006,
+    "n": 1717
+  },
+  "anti_correlated_count": 412,
+  "anti_correlated_pct": 15.7
+}

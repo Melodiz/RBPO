@@ -1,0 +1,4 @@
+outcome,n_utts,total_sub_delta,total_ins_delta,total_del_delta,total_delta,pct_subs,pct_ins,pct_del
+improve,233,-202,-39,-45,-286,70.6,13.6,15.7
+regress,66,41,10,28,79,0.0,0.0,0.0
+tie,856,-6,1,5,0,0.0,0.0,0.0

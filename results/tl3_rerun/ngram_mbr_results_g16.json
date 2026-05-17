@@ -1,0 +1,93 @@
+{
+  "source": "/content/drive/MyDrive/rbpo_results/tl3_rerun/nbest_g16_ngram.jsonl",
+  "n_utterances": 1155,
+  "mean_candidates": 15.8,
+  "utility": "cer",
+  "score_key": "ngram_score",
+  "greedy_wer": 0.11300249709844196,
+  "oracle_wer": 0.09158372313860655,
+  "best_config": {
+    "ctc_weight": 1.0,
+    "pll_weight": 0.0,
+    "tau": 5.0,
+    "wer": 0.11268596349312418,
+    "wer_pct": "11.2686%",
+    "gap_closed_pct": 1.48
+  },
+  "all_results": [
+    {
+      "ctc_weight": 1.0,
+      "pll_weight": 0.0,
+      "tau": 5.0,
+      "wer": 0.11268596349312418,
+      "wer_pct": "11.2686%",
+      "gap_closed_pct": 1.48
+    },
+    {
+      "ctc_weight": 1.0,
+      "pll_weight": 0.5,
+      "tau": 10.0,
+      "wer": 0.11268596349312418,
+      "wer_pct": "11.2686%",
+      "gap_closed_pct": 1.48
+    },
+    {
+      "ctc_weight": 1.0,
+      "pll_weight": 1.0,
+      "tau": 10.0,
+      "wer": 0.11268596349312418,
+      "wer_pct": "11.2686%",
+      "gap_closed_pct": 1.48
+    },
+    {
+      "ctc_weight": 1.0,
+      "pll_weight": 0.0,
+      "tau": 10.0,
+      "wer": 0.11272113389371505,
+      "wer_pct": "11.2721%",
+      "gap_closed_pct": 1.31
+    },
+    {
+      "ctc_weight": 1.0,
+      "pll_weight": 0.5,
+      "tau": 5.0,
+      "wer": 0.1128618154960785,
+      "wer_pct": "11.2862%",
+      "gap_closed_pct": 0.66
+    },
+    {
+      "ctc_weight": 1.0,
+      "pll_weight": 1.0,
+      "tau": 1.0,
+      "wer": 0.11293215629726022,
+      "wer_pct": "11.2932%",
+      "gap_closed_pct": 0.33
+    },
+    {
+      "ctc_weight": 1.0,
+      "pll_weight": 0.5,
+      "tau": 1.0,
+      "wer": 0.11296732669785109,
+      "wer_pct": "11.2967%",
+      "gap_closed_pct": 0.16
+    },
+    {
+      "ctc_weight": 1.0,
+      "pll_weight": 1.0,
+      "tau": 5.0,
+      "wer": 0.11296732669785109,
+      "wer_pct": "11.2967%",
+      "gap_closed_pct": 0.16
+    },
+    {
+      "ctc_weight": 1.0,
+      "pll_weight": 0.0,
+      "tau": 1.0,
+      "wer": 0.11300249709844196,
+      "wer_pct": "11.3002%",
+      "gap_closed_pct": 0.0
+    }
+  ],
+  "cer_matrix_time_s": 1.2,
+  "sweep_time_s": 0.3
+}

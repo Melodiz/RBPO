@@ -1,0 +1,4 @@
+method,wer_pct,delta_pp,p_value,ci_lower,ci_upper
+roberta_interp_a0.7,4.7185,-0.0569,0.0242,-0.1128,-0.0020
+mbr_cer_pll_tau10,4.5556,-0.2198,0.0000,-0.3046,-0.1355
+mbr_cer_ctc_tau_inf,4.7421,-0.0334,0.1377,-0.0914,+0.0240

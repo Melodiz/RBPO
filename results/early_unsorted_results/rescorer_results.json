@@ -1,0 +1,44 @@
+{
+  "greedy": {
+    "wer": 0.060218,
+    "gap_closed_pct": 0.0
+  },
+  "oracle": {
+    "wer": 0.044418,
+    "gap_closed_pct": 100.0
+  },
+  "ridge_ctc_only": {
+    "wer": 0.062201,
+    "gap_closed_pct": -12.55
+  },
+  "ridge_length_only": {
+    "wer": 0.122105,
+    "gap_closed_pct": -391.68
+  },
+  "ridge_agreement_only": {
+    "wer": 0.061043,
+    "gap_closed_pct": -5.22
+  },
+  "ridge_prob_only": {
+    "wer": 0.062358,
+    "gap_closed_pct": -13.54
+  },
+  "ridge_ctc_plus_agreement": {
+    "wer": 0.060964,
+    "gap_closed_pct": -4.72
+  },
+  "ridge_all_features": {
+    "wer": 0.061357,
+    "gap_closed_pct": -7.2
+  },
+  "mlp_all": {
+    "wer": 0.060454,
+    "gap_closed_pct": -1.49
+  },
+  "pairwise_all": {
+    "wer": 0.060709,
+    "gap_closed_pct": -3.11
+  },
+  "cv_r2_mean": 0.7601,
+  "cv_r2_std": 0.0271
+}

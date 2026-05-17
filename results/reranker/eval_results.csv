@@ -1,0 +1,9 @@
+method,wer,delta,p_value,ci_lo,ci_hi
+greedy_top1,0.06022,0.0,,,
+oracle,0.03535,,,,
+reranker_only,0.09633,0.04104,1.0,0.0391,0.0430
+argmax_ctc+rerank,0.05981,0.00451,1.0,0.0036,0.0054
+argmax_ctc+rerank+pll,0.05790,0.00261,1.0,0.0017,0.0035
+mbr_reranker_post,0.05745,0.00216,1.0,0.0014,0.0030
+mbr_rerank+pll_post,0.05529,0.00000,1.0,0.0000,0.0000
+baseline_mbr_cer_pll_tau10,0.05529,0.0,,,

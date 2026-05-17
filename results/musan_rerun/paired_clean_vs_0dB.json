@@ -1,0 +1,63 @@
+{
+  "label_a": "LS clean",
+  "label_b": "LS+noise@0dB",
+  "n_common": 2864,
+  "transitions": {
+    "both_optimal": 1616,
+    "LS clean_optimal_LS+noise@0dB_recoverable": 577,
+    "LS clean_recoverable_LS+noise@0dB_optimal": 293,
+    "both_recoverable": 378
+  },
+  "wer_change": {
+    "increased": 1488,
+    "same": 1277,
+    "decreased": 99
+  },
+  "examples_became_recoverable": [
+    {
+      "utt_id": "116-288045-0008",
+      "ref": "but the greeks loved their gods i protested my heart clamoring in my breast",
+      "a_greedy": "but the greeks loved their gods i protested my heart clamor in my breast",
+      "b_greedy": "that the greeks loved their gods i protested my heart clamor in my breast",
+      "a_wer": 0.07142857142857142,
+      "b_greedy_wer": 0.14285714285714285,
+      "b_oracle_wer": 0.07142857142857142
+    },
+    {
+      "utt_id": "116-288045-0011",
+      "ref": "it made athens a city of light it created the beautiful the true the good yes our religion was divin",
+      "a_greedy": "it made athens a sea of light it created the beautiful the true the good yes our",
+      "b_greedy": "it made athos a sea of light it created the beautiful the true the good yes our ",
+      "a_wer": 0.05,
+      "b_greedy_wer": 0.1,
+      "b_oracle_wer": 0.05
+    },
+    {
+      "utt_id": "116-288045-0012",
+      "ref": "it had only one fault interrupted my guide what was that",
+      "a_greedy": "it had only one fault interrupted my guide what was that",
+      "b_greedy": "they had only one fault interrupted my guide what was that",
+      "a_wer": 0.0,
+      "b_greedy_wer": 0.09090909090909091,
+      "b_oracle_wer": 0.0
+    },
+    {
+      "utt_id": "116-288045-0017",
+      "ref": "do you doubt homer",
+      "a_greedy": "do you doubt homer",
+      "b_greedy": "don know",
+      "a_wer": 0.0,
+      "b_greedy_wer": 1.0,
+      "b_oracle_wer": 0.5
+    },
+    {
+      "utt_id": "116-288045-0025",
+      "ref": "if you were to search for apollo in all the universe you would never find any one answering to his n",
+      "a_greedy": "if you were to search for apollo in all the universe you would never find any on",
+      "b_greedy": "if he would a search for apolloing all therevers who would never find any one an",
+      "a_wer": 0.0,
+      "b_greedy_wer": 0.34782608695652173,
+      "b_oracle_wer": 0.2608695652173913
+    }
+  ]
+}

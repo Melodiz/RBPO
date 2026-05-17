@@ -1,0 +1,44 @@
+{
+  "experiment": "E16_zipformer_m",
+  "model_config": "Zipformer-M CR-CTC",
+  "model_dir": "/content/icefall-asr-librispeech-zipformer-medium-cr-ctc",
+  "n_utterances": 2864,
+  "G": 16,
+  "wers": {
+    "greedy": 0.04775457329041376,
+    "oracle": 0.03442725916620868,
+    "roberta_interp_a0.7": 0.047185365470675984,
+    "mbr_cer_pll_tau10": 0.04555625343487477,
+    "mbr_cer_ctc_tau_inf": 0.047420899740912306
+  },
+  "oracle_gap_pp": 1.3327314124205076,
+  "oracle_gap_relative": 27.90793259350597,
+  "bootstrap": {
+    "roberta_interp_a0.7": {
+      "wer": 0.047185365470675984,
+      "delta_pp": -0.056920781973777285,
+      "p_value": 0.0242,
+      "ci_lower": -0.1127951177653196,
+      "ci_upper": -0.0019515460444006537
+    },
+    "mbr_cer_pll_tau10": {
+      "wer": 0.04555625343487477,
+      "delta_pp": -0.2198319855538984,
+      "p_value": 0.0,
+      "ci_lower": -0.3045890594442468,
+      "ci_upper": -0.13553803295502245
+    },
+    "mbr_cer_ctc_tau_inf": {
+      "wer": 0.047420899740912306,
+      "delta_pp": -0.03336735495014509,
+      "p_value": 0.1377,
+      "ci_lower": -0.09137848868569844,
+      "ci_upper": 0.023982456900326382
+    }
+  },
+  "spearman": {
+    "ctc": -0.34983078100788406,
+    "roberta_pll": -0.4824396040181755
+  },
+  "n_bootstrap": 10000
+}

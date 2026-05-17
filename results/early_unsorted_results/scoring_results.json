@@ -1,0 +1,47 @@
+{
+  "greedy": {
+    "wer": 0.060218,
+    "cer": 0.024599,
+    "gap_closed_pct": 0.0
+  },
+  "argmax_p": {
+    "wer": 0.060218,
+    "cer": 0.024599,
+    "gap_closed_pct": 0.0
+  },
+  "length_norm_tok": {
+    "wer": 0.060218,
+    "cer": 0.024583,
+    "gap_closed_pct": 0.0
+  },
+  "length_norm_char": {
+    "wer": 0.060218,
+    "cer": 0.024587,
+    "gap_closed_pct": 0.0
+  },
+  "mbr_cer": {
+    "wer": 0.060277,
+    "cer": 0.02458,
+    "gap_closed_pct": -0.37
+  },
+  "mbr_wer": {
+    "wer": 0.060218,
+    "cer": 0.024599,
+    "gap_closed_pct": 0.0
+  },
+  "mbr_token": {
+    "wer": 0.060277,
+    "cer": 0.024602,
+    "gap_closed_pct": -0.37
+  },
+  "self_consistency": {
+    "wer": 0.060493,
+    "cer": 0.024978,
+    "gap_closed_pct": -1.74
+  },
+  "oracle": {
+    "wer": 0.044418,
+    "cer": 0.020436,
+    "gap_closed_pct": 100.0
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "source": "/content/drive/MyDrive/rbpo_results/tl3_rerun/nbest_g128.jsonl",
+  "num_utterances": 1155,
+  "total_ref_words": 28433,
+  "greedy_wer": 0.11300249709844196,
+  "oracle_wer": 0.07512397566208279,
+  "abs_gap_pp": 0.03787852143635917,
+  "rel_gap_pct": 33.520074696545294,
+  "recoverable_count": 702,
+  "recoverable_pct": 60.77922077922078,
+  "greedy_optimal_count": 453,
+  "greedy_optimal_pct": 39.22077922077922,
+  "mean_unique_hyps": 122.1,
+  "calibration": {
+    "mean_rho": -0.2303484490654443,
+    "median_rho": -0.2286375482288766,
+    "ci_95_lo": -0.2371718078754944,
+    "ci_95_hi": -0.22454497551983515,
+    "n_utts_with_rho": 1154,
+    "recoverable_mean_rho": -0.19751432016212692,
+    "recoverable_n": 702,
+    "greedy_opt_mean_rho": -0.2813430474949329,
+    "greedy_opt_n": 452,
+    "mean_logprob_spread": 22.179547496103893
+  },
+  "error_decomp": {
+    "sub_pct": 62.96296296296296,
+    "ins_pct": 17.678182384064737,
+    "del_pct": 19.358854652972298,
+    "total_errors": 3213
+  }
+}

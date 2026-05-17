@@ -1,0 +1,20 @@
+{
+  "split": "train-clean-100",
+  "num_utterances": 10,
+  "num_paths_oversample": 512,
+  "nbest_scale": 0.5,
+  "max_keep": 128,
+  "mean_hypotheses_per_utt": 128.0,
+  "mean_greedy_wer": 0.25595238095238093,
+  "mean_top1_nbest_wer": 0.25595238095238093,
+  "mean_oracle_wer": 0.24404761904761904,
+  "mean_wer_std_per_utt": 0.10886293356768151,
+  "utterances_with_zero_variance": 0,
+  "total_edits_greedy": 43,
+  "total_edits_top1": 43,
+  "total_edits_oracle": 41,
+  "total_ref_words": 168,
+  "elapsed_seconds": 4.371220350265503,
+  "output_jsonl": "/content/drive/MyDrive/rbpo_results/voxpopuli/smoke/test_G128_smoke.jsonl",
+  "output_size_bytes": 458111
+}

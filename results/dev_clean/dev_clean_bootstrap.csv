@@ -1,0 +1,8 @@
+method,wer_pct,delta_pp,p_value,ci_lower,ci_upper,significant_005,significant_001
+Greedy,2.3676,0.000,—,—,—,—,—
+Oracle,1.5404,-0.827,—,—,—,—,—
+MBR-CER τ=50,2.3400,-0.028,0.1119,-0.071,+0.015,False,False
+MBR-CER τ=∞,2.3510,-0.017,0.2734,-0.068,+0.033,False,False
+RoBERTa PLL interp α=0.7,2.3657,-0.002,0.4868,-0.045,+0.041,False,False
+GPT-2 interp α=0.8,2.3547,-0.013,0.0496,-0.029,+0.002,True,False
+MBR-CER + RoBERTa PLL τ=10,2.2830,-0.085,0.0080,-0.156,-0.016,True,True

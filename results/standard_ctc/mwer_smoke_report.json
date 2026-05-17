@@ -1,0 +1,85 @@
+{
+  "mode": "mwer",
+  "config": {
+    "lr": 1e-06,
+    "ce_weight": 0.01,
+    "G": 16,
+    "grad_accum": 4,
+    "num_epochs": 1,
+    "mode": "mwer",
+    "nbest_scale": 1.0,
+    "output_beam": 8.0,
+    "model_size": "small",
+    "use_cr_ctc": false,
+    "eval_every_steps": 500,
+    "max_grad_norm": 5.0,
+    "note": "Match exp_F3 config: pure MWER, no clipping"
+  },
+  "total_steps": 3000,
+  "epoch_time_s": 7342.4,
+  "baseline_eval": {
+    "dev-other": {
+      "wer": 0.0707191646384549,
+      "num_utts": 2864
+    },
+    "dev-clean": {
+      "wer": 0.027407080622035954,
+      "num_utts": 2703
+    }
+  },
+  "final_eval": {
+    "dev-other": {
+      "wer": 0.07309413519667111,
+      "num_utts": 2864
+    },
+    "dev-clean": {
+      "wer": 0.028877614793573765,
+      "num_utts": 2703
+    }
+  },
+  "eval_log": [
+    {
+      "step": 500,
+      "dev-other": {
+        "wer": 0.07115097746722147,
+        "num_utts": 2864
+      }
+    },
+    {
+      "step": 1000,
+      "dev-other": {
+        "wer": 0.07140613959331082,
+        "num_utts": 2864
+      }
+    },
+    {
+      "step": 1500,
+      "dev-other": {
+        "wer": 0.07209311454816676,
+        "num_utts": 2864
+      }
+    },
+    {
+      "step": 2000,
+      "dev-other": {
+        "wer": 0.07246604380937427,
+        "num_utts": 2864
+      }
+    },
+    {
+      "step": 2500,
+      "dev-other": {
+        "wer": 0.07305487948496506,
+        "num_utts": 2864
+      }
+    },
+    {
+      "step": 3000,
+      "dev-other": {
+        "wer": 0.07309413519667111,
+        "num_utts": 2864
+      }
+    }
+  ],
+  "relative_change_pct": 3.4
+}

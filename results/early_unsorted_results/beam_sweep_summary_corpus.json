@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "G": 16,
+      "corpus_oracle_wer": 0.044418,
+      "corpus_greedy_wer": 0.060218,
+      "mean_oracle_wer": 0.045924,
+      "mean_greedy_wer": 0.066544,
+      "abs_gap_corpus": 0.0158,
+      "rel_gap_corpus": 0.262386,
+      "mean_unique_candidates": 15.53,
+      "mean_pairwise_wer": 0.190554,
+      "mean_logprob_spread": 16.5257,
+      "num_recoverable": 665,
+      "pct_recoverable": 0.2322,
+      "mean_improvement_on_recoverable": 0.088806
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "split": "train-clean-100",
+  "num_utterances": 1842,
+  "num_paths_oversample": 512,
+  "nbest_scale": 0.5,
+  "max_keep": 128,
+  "mean_hypotheses_per_utt": 127.9457111834962,
+  "mean_greedy_wer": 0.21931326604181686,
+  "mean_top1_nbest_wer": 0.21931326604181686,
+  "mean_oracle_wer": 0.215077505407354,
+  "mean_wer_std_per_utt": 0.09327810142880598,
+  "utterances_with_zero_variance": 0,
+  "total_edits_greedy": 9734,
+  "total_edits_top1": 9734,
+  "total_edits_oracle": 9546,
+  "total_ref_words": 44384,
+  "elapsed_seconds": 1093.1124501228333,
+  "output_jsonl": "/content/drive/MyDrive/rbpo_results/voxpopuli/test_G128.jsonl",
+  "output_size_bytes": 115308778
+}

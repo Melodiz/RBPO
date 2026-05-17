@@ -1,0 +1,44 @@
+{
+  "4": {
+    "nbest_path": null,
+    "scored_path": null,
+    "nbest_exists": false,
+    "scored_exists": false,
+    "action": "generate + score"
+  },
+  "8": {
+    "nbest_path": null,
+    "scored_path": null,
+    "nbest_exists": false,
+    "scored_exists": false,
+    "action": "generate + score"
+  },
+  "16": {
+    "nbest_path": "/content/drive/MyDrive/rbpo_results/g_scaling/nbest_dev_other_G16.jsonl",
+    "scored_path": "/content/drive/MyDrive/rbpo_results/g_scaling/neural_lm_scores_G16.jsonl",
+    "nbest_exists": true,
+    "scored_exists": true,
+    "action": "none (fully scored)"
+  },
+  "32": {
+    "nbest_path": null,
+    "scored_path": null,
+    "nbest_exists": false,
+    "scored_exists": false,
+    "action": "generate + score"
+  },
+  "64": {
+    "nbest_path": null,
+    "scored_path": null,
+    "nbest_exists": false,
+    "scored_exists": false,
+    "action": "generate + score"
+  },
+  "128": {
+    "nbest_path": "/content/drive/MyDrive/rbpo_results/g_scaling/nbest_dev_other_G128.jsonl",
+    "scored_path": "/content/drive/MyDrive/rbpo_results/g_scaling/neural_lm_scores_G128.jsonl",
+    "nbest_exists": true,
+    "scored_exists": true,
+    "action": "none (fully scored)"
+  }
+}

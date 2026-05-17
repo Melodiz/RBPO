@@ -1,0 +1,67 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+.pytest_cache/
+.DS_Store
+.ipynb_checkpoints/
+
+results/*.json
+results/*.csv
+results/*.png
+!results/.gitkeep
+!results/spearman_cross_condition.json
+
+# Large data files (stay on Drive)
+*.jsonl
+*.jsonl.gz
+*.arpa
+
+# CER matrix cache
+results/.cache/
+
+# Model checkpoints & weights
+*.pt
+*.ckpt
+*.bin
+*.pkl
+*.pickle
+
+# Audio & raw data
+*.wav
+*.flac
+*.ogg
+*.sph
+*.npz
+*.tar.gz
+*.gz
+*.zip
+
+# Large feature matrices
+results/**/features_*.csv
+results/**/features_*.npz
+
+# Staging & scratch dirs
+kb_updates/
+results/*/raw/
+results/smoke_test/
+results/reranker_smoke/
+results/reranker_training_data_smoke/
+
+# k2 HLG build artifacts
+results/hlg_decode/hlg_artifacts/
+results/hlg_decode/k
+results/hlg_decode/k2_subset.log
+results/hlg_decode/k2_warnings.log
+
+# Stray LaTeX artifacts
+texput.log
+
+# Report build artifacts
+report/
+reports/

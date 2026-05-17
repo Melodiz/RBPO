@@ -1,0 +1,14 @@
+{
+  "n_utterances": 5000,
+  "n_recoverable": 1074,
+  "recoverable_pct": 21.48,
+  "n_oracle_eq_gold": 4229,
+  "n_oracle_neq_gold": 771,
+  "mean_oracle_wer": 0.0063050753250964,
+  "mean_greedy_wer": 0.014057596776247988,
+  "oracle_gap_pp": 0.7752521451151588,
+  "G": 16,
+  "train_subset": 5000,
+  "oracle_jsonl_path": "/content/drive/MyDrive/rbpo_results/standard_ctc/raft_oracle_transcripts_n5000.jsonl",
+  "nbest_jsonl_path": "/content/drive/MyDrive/rbpo_results/standard_ctc/nbest_train_g16_n5000.jsonl"
+}

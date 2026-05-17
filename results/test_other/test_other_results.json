@@ -1,0 +1,189 @@
+{
+  "metadata": {
+    "split": "test-other",
+    "n_utterances": 2939,
+    "n_ref_words": 52343,
+    "n_bootstrap": 10000,
+    "seed": 42,
+    "model": "Zipformer-S CR-CTC BPE-500 22.1M",
+    "generation_params": {
+      "G": 16,
+      "nbest_scale": 1.0,
+      "oversample": 64
+    },
+    "date": "2026-05-03"
+  },
+  "results": [
+    {
+      "method": "Greedy",
+      "wer": 0.059569,
+      "wer_pct": 5.9569
+    },
+    {
+      "method": "Oracle",
+      "wer": 0.044113,
+      "wer_pct": 4.4113
+    },
+    {
+      "method": "MBR-CER τ=50",
+      "wer": 0.059206,
+      "wer_pct": 5.9206
+    },
+    {
+      "method": "MBR-CER τ=∞",
+      "wer": 0.059225,
+      "wer_pct": 5.9225
+    },
+    {
+      "method": "RoBERTa PLL interp α=0.7",
+      "wer": 0.058499,
+      "wer_pct": 5.8499
+    },
+    {
+      "method": "GPT-2 interp α=0.8",
+      "wer": 0.059129,
+      "wer_pct": 5.9129
+    },
+    {
+      "method": "MBR-CER + RoBERTa PLL τ=10",
+      "wer": 0.057696,
+      "wer_pct": 5.7696
+    }
+  ],
+  "bootstrap_tests": [
+    {
+      "method": "MBR-CER τ=50",
+      "wer_baseline": 0.059569,
+      "wer_method": 0.059206,
+      "delta_pp": -0.0363,
+      "p_value": 0.1535,
+      "ci_lower": -0.1029,
+      "ci_upper": 0.0296,
+      "significant_005": false,
+      "significant_001": false,
+      "n_utterances_differ": 359
+    },
+    {
+      "method": "MBR-CER τ=∞",
+      "wer_baseline": 0.059569,
+      "wer_method": 0.059225,
+      "delta_pp": -0.0344,
+      "p_value": 0.1706,
+      "ci_lower": -0.1023,
+      "ci_upper": 0.0329,
+      "significant_005": false,
+      "significant_001": false,
+      "n_utterances_differ": 390
+    },
+    {
+      "method": "RoBERTa PLL interp α=0.7",
+      "wer_baseline": 0.059569,
+      "wer_method": 0.058499,
+      "delta_pp": -0.107,
+      "p_value": 0.0007,
+      "ci_lower": -0.1757,
+      "ci_upper": -0.0395,
+      "significant_005": true,
+      "significant_001": true,
+      "n_utterances_differ": 324
+    },
+    {
+      "method": "GPT-2 interp α=0.8",
+      "wer_baseline": 0.059569,
+      "wer_method": 0.059129,
+      "delta_pp": -0.0439,
+      "p_value": 0.0015,
+      "ci_lower": -0.0748,
+      "ci_upper": -0.015,
+      "significant_005": true,
+      "significant_001": true,
+      "n_utterances_differ": 81
+    },
+    {
+      "method": "MBR-CER + RoBERTa PLL τ=10",
+      "wer_baseline": 0.059569,
+      "wer_method": 0.057696,
+      "delta_pp": -0.1872,
+      "p_value": 0.0003,
+      "ci_lower": -0.2882,
+      "ci_upper": -0.0855,
+      "significant_005": true,
+      "significant_001": true,
+      "n_utterances_differ": 652
+    }
+  ],
+  "spearman": {
+    "CTC log-prob": {
+      "mean": -0.33846149278813886,
+      "ci_lower": -0.34673172726741935,
+      "ci_upper": -0.33015982021946044,
+      "n_utterances": 2930,
+      "n_bootstrap": 10000
+    },
+    "RoBERTa PLL": {
+      "mean": -0.47466673604202425,
+      "ci_lower": -0.48369592403581363,
+      "ci_upper": -0.465633661717847,
+      "n_utterances": 2930,
+      "n_bootstrap": 10000
+    },
+    "Interpolated (α=0.6 CTC + 0.4 PLL)": {
+      "mean": -0.5165299792280008,
+      "ci_lower": -0.5248789067533045,
+      "ci_upper": -0.5082011112146956,
+      "n_utterances": 2930,
+      "n_bootstrap": 10000
+    },
+    "GPT-2 LL": {
+      "mean": -0.3934209047247937,
+      "ci_lower": -0.4030740965278309,
+      "ci_upper": -0.38375572766540067,
+      "n_utterances": 2930,
+      "n_bootstrap": 10000
+    }
+  },
+  "verification": [
+    {
+      "check": "test-other utt count ≈ 2939",
+      "measured": 2939,
+      "expected": 2939,
+      "pass": true
+    },
+    {
+      "check": "Greedy WER ≈ 6.03%",
+      "measured": 0.05956861471447949,
+      "expected": 0.0603,
+      "pass": true
+    },
+    {
+      "check": "Oracle < Greedy",
+      "measured": 0.044112870870985615,
+      "expected": 0.05956861471447949,
+      "pass": true
+    },
+    {
+      "check": "Record count consistent",
+      "measured": 2939,
+      "expected": 2939,
+      "pass": true
+    },
+    {
+      "check": "No empty candidates",
+      "measured": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "check": "PLL sign convention",
+      "measured": 1.0,
+      "expected": 0.95,
+      "pass": true
+    },
+    {
+      "check": "Total ref words",
+      "measured": 52343,
+      "expected": null,
+      "pass": true
+    }
+  ]
+}

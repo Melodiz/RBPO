@@ -1,0 +1,73 @@
+{
+  "experiment": "TL3 Phase 0: Zero-Shot Evaluation",
+  "model": "Zipformer-S CR-CTC (BPE-500, 22.1M params)",
+  "training_data": "LibriSpeech train-clean-100",
+  "eval_data": "TED-LIUM 3 test (zero-shot)",
+  "num_utterances": 1155,
+  "greedy_wer": 0.11307283789962368,
+  "oracle_g16": {
+    "oracle_wer": 0.1117363626771709,
+    "greedy_wer_from_nbest": 0.11303766749903281,
+    "abs_gap_pp": 0.001301304821861915,
+    "rel_gap_pct": 1.1512134411947677,
+    "recoverable_count": 36,
+    "recoverable_pct": 3.116883116883117,
+    "greedy_optimal_count": 1119,
+    "greedy_optimal_pct": 96.88311688311688,
+    "total_edits_greedy": 3214,
+    "total_edits_oracle": 3177,
+    "total_ref_words": 28433,
+    "num_utterances": 1155
+  },
+  "oracle_g128": {
+    "oracle_wer": 0.11001301304821862,
+    "greedy_wer_from_nbest": 0.11307283789962368,
+    "abs_gap_pp": 0.0030598248514050602,
+    "rel_gap_pct": 2.706065318818043,
+    "recoverable_count": 69,
+    "recoverable_pct": 5.974025974025974,
+    "greedy_optimal_count": 1086,
+    "greedy_optimal_pct": 94.02597402597402,
+    "total_edits_greedy": 3215,
+    "total_edits_oracle": 3128,
+    "total_ref_words": 28433,
+    "num_utterances": 1155
+  },
+  "calibration_g16": {
+    "mean_rho": -0.4518782071072043,
+    "median_rho": -0.47129368903826846,
+    "ci_95_lo": -0.463678116607026,
+    "ci_95_hi": -0.4391048307004394,
+    "n_utts_with_rho": 1155,
+    "recoverable_mean_rho": -0.2965656486603422,
+    "recoverable_n": 36,
+    "greedy_opt_mean_rho": -0.45687485778109793,
+    "greedy_opt_n": 1119,
+    "mean_logprob_spread": 92.8400281086807,
+    "std_logprob_spread": 59.14796192056656
+  },
+  "error_decomposition": {
+    "substitutions": 2026,
+    "insertions": 567,
+    "deletions": 622,
+    "total_errors": 3215,
+    "total_ref_words": 28433,
+    "sub_pct": 63.01710730948679,
+    "ins_pct": 17.636080870917574,
+    "del_pct": 19.346811819595647,
+    "wer": 11.307283789962367
+  },
+  "nbest_config": {
+    "nbest_scale": 0.5,
+    "num_paths_g16": 64,
+    "num_paths_g128": 256
+  },
+  "reference_ls_devother": {
+    "greedy_wer": 0.0602,
+    "oracle_g16": 0.0444,
+    "oracle_g128": 0.0354,
+    "rel_gap_g16": 26.2,
+    "recoverable_pct": 23.2,
+    "greedy_optimal_pct": 76.8
+  }
+}

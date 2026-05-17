@@ -1,0 +1,32 @@
+{
+  "source": "/content/drive/MyDrive/rbpo_results/musan_rerun/nbest_0dB_g128.jsonl",
+  "num_utterances": 2864,
+  "total_ref_words": 51585,
+  "greedy_wer": 0.17877289909857516,
+  "oracle_wer": 0.13682271978288263,
+  "abs_gap_pp": 0.04195017931569253,
+  "rel_gap_pct": 23.465625677727168,
+  "recoverable_count": 1494,
+  "recoverable_pct": 52.16480446927374,
+  "greedy_optimal_count": 1370,
+  "greedy_optimal_pct": 47.83519553072625,
+  "mean_unique_hyps": 121.0,
+  "calibration": {
+    "mean_rho": -0.23419606151910322,
+    "median_rho": -0.23024832496570208,
+    "ci_95_lo": -0.23942871350097084,
+    "ci_95_hi": -0.22940672369440238,
+    "n_utts_with_rho": 2862,
+    "recoverable_mean_rho": -0.18664411256768662,
+    "recoverable_n": 1494,
+    "greedy_opt_mean_rho": -0.28612779524236076,
+    "greedy_opt_n": 1368,
+    "mean_logprob_spread": 24.17858289071229
+  },
+  "error_decomp": {
+    "sub_pct": 72.46801127738017,
+    "ins_pct": 5.139882888744307,
+    "del_pct": 22.392105833875515,
+    "total_errors": 9222
+  }
+}

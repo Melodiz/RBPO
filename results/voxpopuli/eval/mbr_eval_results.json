@@ -1,0 +1,69 @@
+{
+  "input_jsonl": "/content/drive/MyDrive/rbpo_results/voxpopuli/test_G128_scored.jsonl",
+  "n_utterances": 1842,
+  "wer_greedy": 0.21931326604181686,
+  "wer_oracle": 0.215077505407354,
+  "best_mbr_cer_pll": {
+    "tau": 10.0,
+    "wer": 0.21967375630857966
+  },
+  "best_mbr_wer_pll": {
+    "tau": 20.0,
+    "wer": 0.21933579668348954
+  },
+  "tau_sweep_results": [
+    {
+      "utility": "cer",
+      "tau": 5.0,
+      "wer": 0.22091294160057678,
+      "elapsed_s": 225.3107054233551
+    },
+    {
+      "utility": "cer",
+      "tau": 10.0,
+      "wer": 0.21967375630857966,
+      "elapsed_s": 222.54973888397217
+    },
+    {
+      "utility": "cer",
+      "tau": 20.0,
+      "wer": 0.2198314708002884,
+      "elapsed_s": 222.13219571113586
+    },
+    {
+      "utility": "wer",
+      "tau": 5.0,
+      "wer": 0.22113824801730353,
+      "elapsed_s": 117.31052780151367
+    },
+    {
+      "utility": "wer",
+      "tau": 10.0,
+      "wer": 0.2195385724585436,
+      "elapsed_s": 118.27835726737976
+    },
+    {
+      "utility": "wer",
+      "tau": 20.0,
+      "wer": 0.21933579668348954,
+      "elapsed_s": 117.93146324157715
+    }
+  ],
+  "diagnostics": {
+    "n_utterances": 1842,
+    "wer_greedy": 0.21931326604181686,
+    "wer_oracle": 0.215077505407354,
+    "wer_mbr_pll": 0.21967375630857966,
+    "total_gap_pp": 0.42357606344628485,
+    "covered_by_mbr_pp": -0.03604902667627974,
+    "selection_residual_pp": 0.4596250901225646,
+    "selection_pct_of_gap": 108.51063829787238,
+    "mean_unique_per_utt": 127.9457111834962,
+    "median_unique_per_utt": 128.0,
+    "utts_with_better_than_greedy_in_nbest": 157,
+    "mbr_picks_oracle_count": 1660,
+    "mbr_picks_oracle_pct": 90.11943539630836,
+    "oracle_rank_in_mbr_median": 1.0,
+    "oracle_rank_in_mbr_mean": 3.1970684039087947
+  }
+}

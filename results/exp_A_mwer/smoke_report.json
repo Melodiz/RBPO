@@ -1,0 +1,168 @@
+{
+  "mode": "mwer",
+  "run_name": "exp_A_mwer",
+  "num_epochs": 10,
+  "baseline_eval": {
+    "dev-clean": {
+      "wer": 0.02852368277850757,
+      "num_utts": 2703
+    },
+    "dev-other": {
+      "wer": 0.06665961809258399,
+      "num_utts": 2864
+    }
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "steps": 248,
+      "time_seconds": 396.0,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.037795794943138755,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.08532839226086958,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "steps": 249,
+      "time_seconds": 409.9,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.036275410903750006,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.08310796742044387,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 3,
+      "steps": 249,
+      "time_seconds": 413.1,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.04061057388372154,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.09217629672850272,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 4,
+      "steps": 249,
+      "time_seconds": 414.4,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.042642266347566696,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.09621542381603795,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 5,
+      "steps": 249,
+      "time_seconds": 405.1,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.04344753685016016,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.09993431467136475,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "steps": 250,
+      "time_seconds": 404.1,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.0494745175270058,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.11105255618430657,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 7,
+      "steps": 249,
+      "time_seconds": 399.3,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.04931778763979241,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.11286060813001754,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 8,
+      "steps": 250,
+      "time_seconds": 402.3,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.053700979050114415,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.12324263730752706,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 9,
+      "steps": 249,
+      "time_seconds": 399.2,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.06025463100385948,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.13426106509615482,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 10,
+      "steps": 249,
+      "time_seconds": 401.9,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.06004233542522142,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.13487490612508282,
+          "num_utts": 2864
+        }
+      }
+    }
+  ],
+  "first_step_rho_ok": false
+}

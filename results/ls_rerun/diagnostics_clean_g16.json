@@ -1,0 +1,32 @@
+{
+  "source": "/content/drive/MyDrive/rbpo_results/ls_rerun/nbest_clean_g16.jsonl",
+  "num_utterances": 2864,
+  "total_ref_words": 51585,
+  "greedy_wer": 0.05993990501114665,
+  "oracle_wer": 0.044160124067073765,
+  "abs_gap_pp": 0.015779780944072883,
+  "rel_gap_pct": 26.32600258732211,
+  "recoverable_count": 671,
+  "recoverable_pct": 23.428770949720672,
+  "greedy_optimal_count": 2193,
+  "greedy_optimal_pct": 76.57122905027933,
+  "mean_unique_hyps": 15.5,
+  "calibration": {
+    "mean_rho": -0.34650966118747056,
+    "median_rho": -0.36634754853252327,
+    "ci_95_lo": -0.35577265196154856,
+    "ci_95_hi": -0.33864839050402945,
+    "n_utts_with_rho": 2857,
+    "recoverable_mean_rho": -0.2452086156635488,
+    "recoverable_n": 671,
+    "greedy_opt_mean_rho": -0.37760435539906784,
+    "greedy_opt_n": 2186,
+    "mean_logprob_spread": 16.565472688089418
+  },
+  "error_decomp": {
+    "sub_pct": 81.14489003880983,
+    "ins_pct": 9.087968952134542,
+    "del_pct": 9.767141009055628,
+    "total_errors": 3092
+  }
+}

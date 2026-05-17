@@ -1,0 +1,18 @@
+{
+  "dev-other": {
+    "wer": 0.07052437724144615,
+    "cer": 0.028636961834931376,
+    "num_utterances": 2864,
+    "num_ref_words": 51585,
+    "total_edits": 3638,
+    "wall_time_s": 169.1
+  },
+  "dev-clean": {
+    "wer": 0.02770744147918754,
+    "cer": 0.008663396370317726,
+    "num_utterances": 2703,
+    "num_ref_words": 54895,
+    "total_edits": 1521,
+    "wall_time_s": 157.6
+  }
+}

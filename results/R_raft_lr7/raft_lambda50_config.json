@@ -1,0 +1,14 @@
+{
+  "lambda": 0.5,
+  "loss": "L = 0.50 * L_CTC(oracle) + 0.50 * L_CTC(gold), length-normalized",
+  "lr": 1e-07,
+  "G": 16,
+  "grad_accum": 4,
+  "max_grad_norm": 5.0,
+  "model_size": "small",
+  "use_cr_ctc": false,
+  "train_subset": 5000,
+  "eval_every_steps": 200,
+  "max_steps": 3000,
+  "variant": "A"
+}

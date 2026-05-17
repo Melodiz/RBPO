@@ -1,0 +1,15 @@
+{
+  "lr": 1e-06,
+  "ce_weight": 0.01,
+  "G": 16,
+  "grad_accum": 4,
+  "num_epochs": 1,
+  "mode": "mwer",
+  "nbest_scale": 1.0,
+  "output_beam": 8.0,
+  "model_size": "small",
+  "use_cr_ctc": false,
+  "eval_every_steps": 500,
+  "max_grad_norm": 5.0,
+  "note": "Match exp_F3 config: pure MWER, no clipping"
+}

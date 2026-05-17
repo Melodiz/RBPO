@@ -1,0 +1,168 @@
+{
+  "mode": "mwer_clipped",
+  "run_name": "exp_B_mwer_clipped",
+  "num_epochs": 10,
+  "baseline_eval": {
+    "dev-clean": {
+      "wer": 0.02852368277850757,
+      "num_utts": 2703
+    },
+    "dev-other": {
+      "wer": 0.06665961809258399,
+      "num_utts": 2864
+    }
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "steps": 247,
+      "time_seconds": 456.9,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.03775769204422803,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.0848103188634398,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "steps": 248,
+      "time_seconds": 485.8,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.03972226193411694,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.08942038445842447,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 3,
+      "steps": 249,
+      "time_seconds": 491.1,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.041650855388736224,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.09305187227758964,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 4,
+      "steps": 250,
+      "time_seconds": 490.2,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.04458431919560146,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.09797419035729674,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 5,
+      "steps": 249,
+      "time_seconds": 478.3,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.04673804099005267,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.10443934460997585,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "steps": 249,
+      "time_seconds": 477.1,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.048426621456622965,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.10950356861133774,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 7,
+      "steps": 250,
+      "time_seconds": 473.4,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.0511869166938551,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.11546768198297258,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 8,
+      "steps": 250,
+      "time_seconds": 477.0,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.05482017189385016,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.12486441093723473,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 9,
+      "steps": 249,
+      "time_seconds": 474.2,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.06139608635201409,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.13305111788452323,
+          "num_utts": 2864
+        }
+      }
+    },
+    {
+      "epoch": 10,
+      "steps": 249,
+      "time_seconds": 485.6,
+      "eval": {
+        "dev-clean": {
+          "wer": 0.05710389029320987,
+          "num_utts": 2703
+        },
+        "dev-other": {
+          "wer": 0.12847822989097837,
+          "num_utts": 2864
+        }
+      }
+    }
+  ],
+  "first_step_rho_ok": true
+}

@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "model": "Zipformer-S CR-CTC (BPE-500)",
+    "dataset": "LibriSpeech dev-other",
+    "num_utterances": 2864,
+    "nbest_scale": 1.0,
+    "num_paths_oversample": 512,
+    "total_time_seconds": 408.2,
+    "utts_per_second": 7.02,
+    "oom_count": 0
+  },
+  "results": [
+    {
+      "G": 1,
+      "oracle_wer": 0.066544,
+      "greedy_wer": 0.066544,
+      "rel_gap": 0.0,
+      "abs_gap": 0.0,
+      "mean_unique_candidates": 1.0,
+      "mean_pairwise_wer": 0.0,
+      "mean_logprob_spread": 0.0,
+      "num_recoverable": 0,
+      "pct_recoverable": 0.0,
+      "mean_improvement_on_recoverable": 0.0
+    },
+    {
+      "G": 4,
+      "oracle_wer": 0.058945,
+      "greedy_wer": 0.066544,
+      "rel_gap": 0.114205,
+      "abs_gap": 0.0076,
+      "mean_unique_candidates": 4.0,
+      "mean_pairwise_wer": 0.143377,
+      "mean_logprob_spread": 8.0402,
+      "num_recoverable": 283,
+      "pct_recoverable": 0.0988,
+      "mean_improvement_on_recoverable": 0.07691
+    },
+    {
+      "G": 8,
+      "oracle_wer": 0.054458,
+      "greedy_wer": 0.066544,
+      "rel_gap": 0.181632,
+      "abs_gap": 0.012087,
+      "mean_unique_candidates": 8.0,
+      "mean_pairwise_wer": 0.16644,
+      "mean_logprob_spread": 9.4225,
+      "num_recoverable": 425,
+      "pct_recoverable": 0.1484,
+      "mean_improvement_on_recoverable": 0.081449
+    },
+    {
+      "G": 16,
+      "oracle_wer": 0.049425,
+      "greedy_wer": 0.066544,
+      "rel_gap": 0.25726,
+      "abs_gap": 0.017119,
+      "mean_unique_candidates": 15.99,
+      "mean_pairwise_wer": 0.181604,
+      "mean_logprob_spread": 11.0143,
+      "num_recoverable": 573,
+      "pct_recoverable": 0.2001,
+      "mean_improvement_on_recoverable": 0.085566
+    },
+    {
+      "G": 32,
+      "oracle_wer": 0.044195,
+      "greedy_wer": 0.066544,
+      "rel_gap": 0.335852,
+      "abs_gap": 0.022349,
+      "mean_unique_candidates": 31.85,
+      "mean_pairwise_wer": 0.194911,
+      "mean_logprob_spread": 13.0852,
+      "num_recoverable": 718,
+      "pct_recoverable": 0.2507,
+      "mean_improvement_on_recoverable": 0.089147
+    },
+    {
+      "G": 64,
+      "oracle_wer": 0.039806,
+      "greedy_wer": 0.066544,
+      "rel_gap": 0.401808,
+      "abs_gap": 0.026738,
+      "mean_unique_candidates": 62.1,
+      "mean_pairwise_wer": 0.210152,
+      "mean_logprob_spread": 16.2558,
+      "num_recoverable": 853,
+      "pct_recoverable": 0.2978,
+      "mean_improvement_on_recoverable": 0.089775
+    },
+    {
+      "G": 128,
+      "oracle_wer": 0.035793,
+      "greedy_wer": 0.066544,
+      "rel_gap": 0.462117,
+      "abs_gap": 0.030751,
+      "mean_unique_candidates": 113.73,
+      "mean_pairwise_wer": 0.226722,
+      "mean_logprob_spread": 21.2437,
+      "num_recoverable": 964,
+      "pct_recoverable": 0.3366,
+      "mean_improvement_on_recoverable": 0.091361
+    }
+  ]
+}

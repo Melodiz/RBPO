@@ -1,0 +1,6 @@
+failure_mode,count,pct
+lm_hallucination,4,4.8
+consensus_artifact,0,0.0
+near_tie,47,56.0
+greedy_was_perfect,29,34.5
+other,4,4.8

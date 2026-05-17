@@ -1,0 +1,6 @@
+T_passes,greedy_wer,oracle_wer,mbr_cer_wer,mean_unique,method,gap_closed_greedy,gap_closed_mbr,elapsed
+1,0.061357,0.045968,0.060748,15.6,baseline,0.00,0.00,234.6
+4,0.060532,0.044987,0.059767,15.6,mc_dropout_avg,5.36,10.33,683.0
+8,0.060493,0.045654,0.060787,15.6,mc_dropout_avg,5.61,3.70,1292.6
+4,0.060630,0.045968,0.059885,0.0,mc_dropout_scoring,0.00,9.57,612.1
+8,0.060748,0.045968,0.059885,0.0,mc_dropout_scoring,0.00,9.57,1203.1

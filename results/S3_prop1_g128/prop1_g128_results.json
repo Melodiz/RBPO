@@ -1,0 +1,55 @@
+{
+  "experiment": "S3_prop1_g128",
+  "description": "Proposition 4.1 variance ratio: Var(CER_greedy) / Var(CER_MBR)",
+  "split": "dev-other",
+  "G": 128,
+  "n_utterances": 2864,
+  "avg_candidates": 113.73428770949721,
+  "results": [
+    {
+      "tau": "1",
+      "n_utterances": 2864,
+      "var_greedy": 0.0025286612922650635,
+      "var_mbr": 0.0024911036694751794,
+      "var_ratio_greedy_over_mbr": 1.0150767000386607,
+      "mean_cer_greedy": 0.027391637825570078,
+      "mean_cer_mbr": 0.02726948657374978,
+      "mean_cer_delta": 0.00012215125182029815,
+      "n_mbr_different": 11,
+      "frac_mbr_different": 0.003840782122905028,
+      "abs_diff_mean": 0.00016579650321694233,
+      "abs_diff_median": 0.0,
+      "abs_diff_max": 0.11764705882352941
+    },
+    {
+      "tau": "50",
+      "n_utterances": 2864,
+      "var_greedy": 0.0025286612922650635,
+      "var_mbr": 0.002234587753880731,
+      "var_ratio_greedy_over_mbr": 1.1316008010308054,
+      "mean_cer_greedy": 0.027391637825570078,
+      "mean_cer_mbr": 0.02612077705787583,
+      "mean_cer_delta": 0.001270860767694247,
+      "n_mbr_different": 438,
+      "frac_mbr_different": 0.15293296089385475,
+      "abs_diff_mean": 0.002893110327356778,
+      "abs_diff_median": 0.0,
+      "abs_diff_max": 0.25
+    },
+    {
+      "tau": "inf",
+      "n_utterances": 2864,
+      "var_greedy": 0.0025286612922650635,
+      "var_mbr": 0.002234762111556686,
+      "var_ratio_greedy_over_mbr": 1.1315125127585297,
+      "mean_cer_greedy": 0.027391637825570078,
+      "mean_cer_mbr": 0.026095791077050942,
+      "mean_cer_delta": 0.0012958467485191354,
+      "n_mbr_different": 442,
+      "frac_mbr_different": 0.1543296089385475,
+      "abs_diff_mean": 0.002912310055425876,
+      "abs_diff_median": 0.0,
+      "abs_diff_max": 0.25
+    }
+  ]
+}

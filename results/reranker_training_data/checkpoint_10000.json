@@ -1,0 +1,8 @@
+{
+  "num_utterances": 10000,
+  "running_greedy_wer": 0.011092564448058012,
+  "running_top1_wer": 0.011092564448058012,
+  "running_oracle_wer": 0.011017867044367385,
+  "mean_hypotheses_per_utt": 16.0,
+  "zero_variance_count": 0
+}

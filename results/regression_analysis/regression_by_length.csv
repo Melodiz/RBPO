@@ -1,0 +1,7 @@
+length_bin,n_regressions,n_improvements,total_switches,pct_regressions
+1-5,6,7,13,46.2
+6-10,14,35,49,28.6
+11-15,16,53,69,23.2
+16-20,8,51,59,13.6
+21-30,20,78,98,20.4
+31-100,20,56,76,26.3

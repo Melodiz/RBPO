@@ -1,0 +1,3 @@
+method,score_source,tau,wer,delta_pp_vs_greedy
+argmax_interp,kenlm_3gram,—,6.0179,-0.0039
+mbr_cer,kenlm_3gram,10,6.0022,-0.0196

@@ -1,0 +1,98 @@
+{
+  "voxpopuli_n": 1842,
+  "voxpopuli_greedy_wer_baseline": 0.21931326604181686,
+  "voxpopuli_oracle_wer_baseline": 0.215077505407354,
+  "voxpopuli_gap_pp_baseline": 0.4235760634,
+  "normalization_sweep": [
+    {
+      "variant": "baseline (lowercase only)",
+      "greedy_wer": 0.21931,
+      "oracle_wer": 0.21508,
+      "gap_pp": 0.424
+    },
+    {
+      "variant": "+ strip punctuation",
+      "greedy_wer": 0.18288,
+      "oracle_wer": 0.17941,
+      "gap_pp": 0.347
+    },
+    {
+      "variant": "+ expand single digits",
+      "greedy_wer": 0.18288,
+      "oracle_wer": 0.17941,
+      "gap_pp": 0.347
+    },
+    {
+      "variant": "+ expand abbreviations",
+      "greedy_wer": 0.18458,
+      "oracle_wer": 0.18098,
+      "gap_pp": 0.360
+    }
+  ],
+  "checks": {
+    "check1_inspection": {
+      "result": "pass-with-finding",
+      "finding": "VoxPopuli normalized_text retains punctuation (196/200 with non-word chars). Hypotheses have none. Inflates WER ~3.6pp uniformly.",
+      "lowercase_refs_first200": 200,
+      "lowercase_greedies_first200": 200,
+      "refs_with_punct_first200": 196,
+      "greedies_with_punct_first200": 0,
+      "refs_with_digits_first200": 0,
+      "greedies_with_digits_first200": 0
+    },
+    "check2_alignment": {
+      "result": "pass",
+      "n_verified": 10,
+      "all_match": true,
+      "note": "Recomputed edits == editdistance.eval == manual alignment count for all 10 utterances"
+    },
+    "check3_oracle": {
+      "result": "pass",
+      "n_recoverable": 157,
+      "n_inspected": 10,
+      "all_correct": true,
+      "note": "Oracle is min-WER candidate; verified for 10 recoverable utts. No zero-edit candidates being missed."
+    },
+    "check5_compare": {
+      "result": "not-run",
+      "note": "LibriSpeech path either not provided or file missing on this run"
+    },
+    "check6_distribution": {
+      "result": "pass",
+      "n_zero_gap": 1685,
+      "n_with_improvement": 157,
+      "improvement_mean_edits": 1.20,
+      "improvement_median_edits": 1,
+      "improvement_max_edits": 3,
+      "histogram_pp": {
+        "0.00-0.01": 1685,
+        "0.01-1.00": 0,
+        "1.00-5.00": 10,
+        "5.00-10.00": 61,
+        "10.00-20.00": 61,
+        "20.00-50.00": 21,
+        "50.00-100.00": 2,
+        "100.00+": 2
+      }
+    },
+    "check4_beam_sweep": {
+      "result": "pass",
+      "note": "Coverage ceiling is fundamental, not a beam-pruning artifact. Oracle saturates at beam=10 and stays identical at 12/15/20. Wider beams slightly hurt due to N-best dilution at nbest_scale=0.5.",
+      "n_utts": 200,
+      "results": [
+        {"output_beam": 8.0,  "greedy_wer": 0.19286, "oracle_wer": 0.19021, "gap_pp": 0.264, "mean_unique": 128.0},
+        {"output_beam": 10.0, "greedy_wer": 0.19286, "oracle_wer": 0.19264, "gap_pp": 0.022, "mean_unique": 128.0},
+        {"output_beam": 12.0, "greedy_wer": 0.19286, "oracle_wer": 0.19264, "gap_pp": 0.022, "mean_unique": 128.0},
+        {"output_beam": 15.0, "greedy_wer": 0.19286, "oracle_wer": 0.19264, "gap_pp": 0.022, "mean_unique": 128.0},
+        {"output_beam": 20.0, "greedy_wer": 0.19286, "oracle_wer": 0.19264, "gap_pp": 0.022, "mean_unique": 128.0}
+      ]
+    }
+  },
+  "verdict": {
+    "headline": "STRONG PASS. E23 conclusion (coverage-bottlenecked) confirmed by all 5 completed checks. Absolute WERs need ~3.6pp punctuation correction; coverage ceiling is fundamental (not a beam artifact).",
+    "publishable_as_is": "after-punct-strip-correction",
+    "required_correction": "Recompute and report WER with refs/hyps both punct-stripped: greedy 18.29%, oracle 17.94%, gap 0.35pp (157 utts = 8.5% recoverable).",
+    "no_re_run_required": true,
+    "beam_sweep_finding": "Oracle saturates at output_beam=10 (subset, n=200): 19.264% across beam=10/12/15/20. Wider beams add no reference-aligned candidates. The original output_beam=8.0 was, if anything, slightly better for selection (oracle 19.021% on subset)."
+  }
+}

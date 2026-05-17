@@ -1,0 +1,21 @@
+{
+  "split": "dev-other",
+  "num_paths": 128,
+  "lm_order": 3,
+  "methods": {
+    "greedy": 0.06021826175708565,
+    "ctc_nbest_1best": 0.10599042160634373,
+    "ctc_oracle": 0.036978880427102144,
+    "ctc_mean_unique": 113.73777932960894,
+    "hlg_1best": 0.31386904294574863,
+    "hlg_nbest_1best": 0.2819934050404334,
+    "hlg_oracle": 0.12459762895501296,
+    "hlg_mean_unique": 53.69832402234637
+  },
+  "timings": {
+    "ctc_greedy": 156.34709858894348,
+    "ctc_nbest": 929.0199544429779,
+    "hlg_1best": 1240.7550027370453,
+    "hlg_nbest": 1255.918390750885
+  }
+}

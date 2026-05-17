@@ -1,0 +1,160 @@
+{
+  "experiment": "R-PROP2",
+  "description": "Proposition 4.2 verification expanded to n=250",
+  "n_utts_requested": 250,
+  "n_utts_valid": 250,
+  "n_skipped": 0,
+  "G": 8,
+  "mean_ratio_viterbi": 2.9620074314719087,
+  "sd_ratio_viterbi": 1.882622009132809,
+  "ci_lower_viterbi": 2.7401714703342446,
+  "ci_upper_viterbi": 3.2030603622184133,
+  "median_ratio_viterbi": 2.37545925166621,
+  "mean_ratio_sampled": 3.869233960022989,
+  "sd_ratio_sampled": 2.677937756457014,
+  "ci_lower_sampled": 3.5535058887088518,
+  "ci_upper_sampled": 4.213793164154185,
+  "median_ratio_sampled": 3.2454612622013723,
+  "n_violations": 30,
+  "n_rb_worse_viterbi": 0,
+  "n_rb_worse_sampled": 0,
+  "min_ratio_viterbi": 1.096259635469779,
+  "max_ratio_viterbi": 15.433500389123017,
+  "min_ratio_sampled": 1.067824426229491,
+  "max_ratio_sampled": 24.29953876593688,
+  "percentiles_viterbi": {
+    "p5": 1.3095489610249904,
+    "p10": 1.4545177716765934,
+    "p25": 1.7880697488828727,
+    "p50": 2.37545925166621,
+    "p75": 3.4335346059127883,
+    "p90": 4.797026893782143,
+    "p95": 6.864404676770774
+  },
+  "percentiles_sampled": {
+    "p5": 1.5211818838446538,
+    "p10": 1.7544598801794014,
+    "p25": 2.2578600355200136,
+    "p50": 3.2454612622013723,
+    "p75": 4.469504900428474,
+    "p90": 6.310833485396254,
+    "p95": 8.416678927140305
+  },
+  "stage3b_reference": {
+    "n": 50,
+    "mean_viterbi_ctc": 2.703,
+    "median_viterbi_ctc": 2.4715,
+    "min_viterbi_ctc": 1.107,
+    "max_viterbi_ctc": 8.1857,
+    "mean_sampled_ctc": 3.6658,
+    "median_sampled_ctc": 3.382,
+    "min_sampled_ctc": 1.107,
+    "max_sampled_ctc": 11.4148,
+    "rb_worse_viterbi": 0,
+    "rb_worse_sampled": 0
+  },
+  "histogram_viterbi_10bins": [
+    {
+      "bin_start": 1.096259635469779,
+      "bin_end": 2.5299837108351024,
+      "count": 137
+    },
+    {
+      "bin_start": 2.5299837108351024,
+      "bin_end": 3.9637077862004264,
+      "count": 66
+    },
+    {
+      "bin_start": 3.9637077862004264,
+      "bin_end": 5.39743186156575,
+      "count": 26
+    },
+    {
+      "bin_start": 5.39743186156575,
+      "bin_end": 6.831155936931074,
+      "count": 7
+    },
+    {
+      "bin_start": 6.831155936931074,
+      "bin_end": 8.264880012296398,
+      "count": 7
+    },
+    {
+      "bin_start": 8.264880012296398,
+      "bin_end": 9.698604087661721,
+      "count": 4
+    },
+    {
+      "bin_start": 9.698604087661721,
+      "bin_end": 11.132328163027044,
+      "count": 1
+    },
+    {
+      "bin_start": 11.132328163027044,
+      "bin_end": 12.56605223839237,
+      "count": 1
+    },
+    {
+      "bin_start": 12.56605223839237,
+      "bin_end": 13.999776313757692,
+      "count": 0
+    },
+    {
+      "bin_start": 13.999776313757692,
+      "bin_end": 15.433500389123017,
+      "count": 1
+    }
+  ],
+  "histogram_sampled_10bins": [
+    {
+      "bin_start": 1.067824426229491,
+      "bin_end": 3.3909958602002295,
+      "count": 137
+    },
+    {
+      "bin_start": 3.3909958602002295,
+      "bin_end": 5.714167294170968,
+      "count": 76
+    },
+    {
+      "bin_start": 5.714167294170968,
+      "bin_end": 8.037338728141707,
+      "count": 23
+    },
+    {
+      "bin_start": 8.037338728141707,
+      "bin_end": 10.360510162112446,
+      "count": 7
+    },
+    {
+      "bin_start": 10.360510162112446,
+      "bin_end": 12.683681596083185,
+      "count": 2
+    },
+    {
+      "bin_start": 12.683681596083185,
+      "bin_end": 15.006853030053923,
+      "count": 3
+    },
+    {
+      "bin_start": 15.006853030053923,
+      "bin_end": 17.330024464024664,
+      "count": 1
+    },
+    {
+      "bin_start": 17.330024464024664,
+      "bin_end": 19.653195897995403,
+      "count": 0
+    },
+    {
+      "bin_start": 19.653195897995403,
+      "bin_end": 21.97636733196614,
+      "count": 0
+    },
+    {
+      "bin_start": 21.97636733196614,
+      "bin_end": 24.29953876593688,
+      "count": 1
+    }
+  ]
+}

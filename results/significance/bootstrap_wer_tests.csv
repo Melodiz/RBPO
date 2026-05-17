@@ -1,0 +1,12 @@
+method,wer_baseline,wer_method,delta_pp,p_value,ci_lower,ci_upper,significant_005,significant_001
+Argmax P_CTC,6.02,6.02,+0.000,1.0000,+0.000,+0.000,False,False
+Length-norm (tokens),6.02,6.02,+0.000,0.6517,-0.006,+0.006,False,False
+Length-norm (chars),6.02,6.02,+0.000,1.0000,+0.000,+0.000,False,False
+MBR-CER τ=1,6.02,6.03,+0.006,1.0000,+0.000,+0.016,False,False
+MBR-CER τ=50,6.02,5.99,-0.035,0.1630,-0.102,+0.033,False,False
+MBR-CER τ=∞ (uniform),6.02,5.99,-0.033,0.1812,-0.101,+0.035,False,False
+MBR-WER,6.02,6.02,+0.000,1.0000,+0.000,+0.000,False,False
+Self-consistency,6.02,6.04,+0.018,0.7213,-0.047,+0.083,False,False
+RoBERTa PLL interp α=0.7,6.02,5.92,-0.104,0.0019,-0.170,-0.039,True,True
+MBR-CER + RoBERTa PLL τ=10,6.02,5.79,-0.232,0.0000,-0.327,-0.138,True,True
+GPT-2 interp α=0.8,6.02,5.99,-0.033,0.0238,-0.067,-0.002,True,False

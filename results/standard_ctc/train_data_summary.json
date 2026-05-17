@@ -1,0 +1,13 @@
+{
+  "split": "train-clean-100",
+  "num_utterances": 5000,
+  "G": 16,
+  "nbest_scale": 1.0,
+  "greedy_wer": 0.032787549647402124,
+  "oracle_wer": 0.02537662548199956,
+  "gap_pp": 0.0074109241654025625,
+  "recoverable_count": 1052,
+  "recoverable_pct": 21.04,
+  "mean_wer_std_per_utt": 0.0199,
+  "wall_time_s": 470.8
+}

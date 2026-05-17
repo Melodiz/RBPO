@@ -1,0 +1,11 @@
+method,wer_pct,delta_pp,p_value,ci_lower,ci_upper,significant_005,significant_001,n_differ
+MBR-CER + PLL τ=10,5.4219,-0.535,0.0000,-0.629,-0.441,True,True,656
+MBR-CER + PLL τ=50,5.7257,-0.231,0.0000,-0.299,-0.166,True,True,447
+MBR-CER τ=∞ (CTC),5.8365,-0.120,0.0000,-0.181,-0.060,True,True,428
+MBR-CER + PLL τ=∞,5.8365,-0.120,0.0000,-0.181,-0.060,True,True,428
+MBR-CER τ=50 (CTC),5.8441,-0.113,0.0001,-0.173,-0.053,True,True,418
+RoBERTa PLL interp α=0.8,5.8594,-0.097,0.0004,-0.153,-0.042,True,True,211
+RoBERTa PLL interp α=0.7,5.9206,-0.036,0.2164,-0.124,+0.050,False,False,466
+GPT-2 interp α=0.8,5.9225,-0.034,0.0390,-0.073,+0.002,True,False,113
+MBR-CER + PLL τ=5,5.9702,+0.013,0.5831,-0.123,+0.148,False,False,1104
+GPT-2 interp α=0.7,6.0447,+0.088,0.9949,+0.021,+0.157,False,False,311

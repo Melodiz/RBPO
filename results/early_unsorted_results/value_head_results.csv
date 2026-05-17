@@ -1,0 +1,6 @@
+ablation,input_dim,best_epoch,dev_rho,dev_corpus_wer,gap_closed_pct
+ctc_only,8,1,0.4118,0.060238,-0.12
+encoder_only,512,1,0.0595,0.130133,-442.48
+encoder_plus_ctc,515,1,0.3769,0.062142,-12.17
+full_no_lm,777,1,0.3617,0.065871,-35.78
+full_plus_lm,—,(reuse full_no_lm),0.5273,0.06222,-12.67

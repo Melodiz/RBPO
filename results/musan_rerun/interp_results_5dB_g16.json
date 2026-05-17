@@ -1,0 +1,81 @@
+{
+  "source": "/content/drive/MyDrive/rbpo_results/musan_rerun/nbest_5dB_g16_pll.jsonl",
+  "n_utterances": 2864,
+  "score_key": "pll_score",
+  "greedy_wer": 0.11104003101676845,
+  "oracle_wer": 0.09060773480662983,
+  "best_config": {
+    "alpha": 0.8,
+    "wer": 0.11012891344383056,
+    "wer_pct": "11.0129%",
+    "gap_closed_pct": 4.46
+  },
+  "all_results": [
+    {
+      "alpha": 0.0,
+      "wer": 0.12933992439662692,
+      "wer_pct": "12.9340%",
+      "gap_closed_pct": -89.56
+    },
+    {
+      "alpha": 0.1,
+      "wer": 0.12637394591451004,
+      "wer_pct": "12.6374%",
+      "gap_closed_pct": -75.05
+    },
+    {
+      "alpha": 0.2,
+      "wer": 0.12319472714936512,
+      "wer_pct": "12.3195%",
+      "gap_closed_pct": -59.49
+    },
+    {
+      "alpha": 0.3,
+      "wer": 0.11972472618009111,
+      "wer_pct": "11.9725%",
+      "gap_closed_pct": -42.5
+    },
+    {
+      "alpha": 0.4,
+      "wer": 0.11648735097412038,
+      "wer_pct": "11.6487%",
+      "gap_closed_pct": -26.66
+    },
+    {
+      "alpha": 0.5,
+      "wer": 0.11317243384704856,
+      "wer_pct": "11.3172%",
+      "gap_closed_pct": -10.44
+    },
+    {
+      "alpha": 0.6,
+      "wer": 0.11146651158282446,
+      "wer_pct": "11.1467%",
+      "gap_closed_pct": -2.09
+    },
+    {
+      "alpha": 0.7,
+      "wer": 0.11028399728603276,
+      "wer_pct": "11.0284%",
+      "gap_closed_pct": 3.7
+    },
+    {
+      "alpha": 0.8,
+      "wer": 0.11012891344383056,
+      "wer_pct": "11.0129%",
+      "gap_closed_pct": 4.46
+    },
+    {
+      "alpha": 0.9,
+      "wer": 0.11065232141126297,
+      "wer_pct": "11.0652%",
+      "gap_closed_pct": 1.9
+    },
+    {
+      "alpha": 1.0,
+      "wer": 0.11104003101676845,
+      "wer_pct": "11.1040%",
+      "gap_closed_pct": 0.0
+    }
+  ]
+}

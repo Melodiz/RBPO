@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "split": "test-other",
+    "G": 128,
+    "n_bootstrap": 10000,
+    "seed": 42,
+    "date": "2026-05-03"
+  },
+  "method_wers": {
+    "Greedy": 0.059569,
+    "Oracle": 0.03372,
+    "MBR-CER \u03c4=50 (CTC)": 0.058441,
+    "MBR-CER \u03c4=\u221e (CTC)": 0.058365,
+    "RoBERTa PLL interp \u03b1=0.7": 0.059206,
+    "RoBERTa PLL interp \u03b1=0.8": 0.058594,
+    "GPT-2 interp \u03b1=0.7": 0.060447,
+    "GPT-2 interp \u03b1=0.8": 0.059225,
+    "MBR-CER + PLL \u03c4=5": 0.059702,
+    "MBR-CER + PLL \u03c4=10": 0.054219,
+    "MBR-CER + PLL \u03c4=50": 0.057257,
+    "MBR-CER + PLL \u03c4=\u221e": 0.058365
+  },
+  "bootstrap": [
+    {
+      "method": "MBR-CER \u03c4=50 (CTC)",
+      "wer_method": 0.058441,
+      "wer_baseline": 0.059569,
+      "delta_pp": -0.1127,
+      "p_value": 0.0001,
+      "ci_lower": -0.1733,
+      "ci_upper": -0.0534,
+      "significant_005": true,
+      "significant_001": true,
+      "n_utterances_differ": 418
+    },
+    {
+      "method": "MBR-CER \u03c4=\u221e (CTC)",
+      "wer_method": 0.058365,
+      "wer_baseline": 0.059569,
+      "delta_pp": -0.1204,
+      "p_value": 0.0,
+      "ci_lower": -0.1811,
+      "ci_upper": -0.0599,
+      "significant_005": true,
+      "significant_001": true,
+      "n_utterances_differ": 428
+    },
+    {
+      "method": "RoBERTa PLL interp \u03b1=0.7",
+      "wer_method": 0.059206,
+      "wer_baseline": 0.059569,
+      "delta_pp": -0.0363,
+      "p_value": 0.2164,
+      "ci_lower": -0.1243,
+      "ci_upper": 0.0498,
+      "significant_005": false,
+      "significant_001": false,
+      "n_utterances_differ": 466
+    },
+    {
+      "method": "RoBERTa PLL interp \u03b1=0.8",
+      "wer_method": 0.058594,
+      "wer_baseline": 0.059569,
+      "delta_pp": -0.0974,
+      "p_value": 0.0004,
+      "ci_lower": -0.153,
+      "ci_upper": -0.0422,
+      "significant_005": true,
+      "significant_001": true,
+      "n_utterances_differ": 211
+    },
+    {
+      "method": "GPT-2 interp \u03b1=0.7",
+      "wer_method": 0.060447,
+      "wer_baseline": 0.059569,
+      "delta_pp": 0.0879,
+      "p_value": 0.9949,
+      "ci_lower": 0.021,
+      "ci_upper": 0.1565,
+      "significant_005": false,
+      "significant_001": false,
+      "n_utterances_differ": 311
+    },
+    {
+      "method": "GPT-2 interp \u03b1=0.8",
+      "wer_method": 0.059225,
+      "wer_baseline": 0.059569,
+      "delta_pp": -0.0344,
+      "p_value": 0.039,
+      "ci_lower": -0.073,
+      "ci_upper": 0.0019,
+      "significant_005": true,
+      "significant_001": false,
+      "n_utterances_differ": 113
+    },
+    {
+      "method": "MBR-CER + PLL \u03c4=5",
+      "wer_method": 0.059702,
+      "wer_baseline": 0.059569,
+      "delta_pp": 0.0134,
+      "p_value": 0.5831,
+      "ci_lower": -0.1228,
+      "ci_upper": 0.1484,
+      "significant_005": false,
+      "significant_001": false,
+      "n_utterances_differ": 1104
+    },
+    {
+      "method": "MBR-CER + PLL \u03c4=10",
+      "wer_method": 0.054219,
+      "wer_baseline": 0.059569,
+      "delta_pp": -0.5349,
+      "p_value": 0.0,
+      "ci_lower": -0.6289,
+      "ci_upper": -0.4414,
+      "significant_005": true,
+      "significant_001": true,
+      "n_utterances_differ": 656
+    },
+    {
+      "method": "MBR-CER + PLL \u03c4=50",
+      "wer_method": 0.057257,
+      "wer_baseline": 0.059569,
+      "delta_pp": -0.2312,
+      "p_value": 0.0,
+      "ci_lower": -0.2991,
+      "ci_upper": -0.1655,
+      "significant_005": true,
+      "significant_001": true,
+      "n_utterances_differ": 447
+    },
+    {
+      "method": "MBR-CER + PLL \u03c4=\u221e",
+      "wer_method": 0.058365,
+      "wer_baseline": 0.059569,
+      "delta_pp": -0.1204,
+      "p_value": 0.0,
+      "ci_lower": -0.1811,
+      "ci_upper": -0.0599,
+      "significant_005": true,
+      "significant_001": true,
+      "n_utterances_differ": 428
+    }
+  ],
+  "spearman": {
+    "CTC log-prob": {
+      "mean": -0.27266607190378406,
+      "ci_lower": -0.2773900537545781,
+      "ci_upper": -0.2679991193841009,
+      "n_utterances": 2939,
+      "n_bootstrap": 10000
+    },
+    "RoBERTa PLL": {
+      "mean": -0.4507104595612022,
+      "ci_lower": -0.45753416771246713,
+      "ci_upper": -0.4436059792904784,
+      "n_utterances": 2939,
+      "n_bootstrap": 10000
+    },
+    "Interpolated (\u03b1=0.6 CTC + 0.4 PLL)": {
+      "mean": -0.4855161770589239,
+      "ci_lower": -0.491614359054677,
+      "ci_upper": -0.4791288664003504,
+      "n_utterances": 2939,
+      "n_bootstrap": 10000
+    },
+    "GPT-2 LL": {
+      "mean": -0.35286429049038653,
+      "ci_lower": -0.36001868199373804,
+      "ci_upper": -0.3454288745713943,
+      "n_utterances": 2939,
+      "n_bootstrap": 10000
+    }
+  },
+  "verification": [
+    {
+      "check": "Greedy WER \u2248 6.0%",
+      "measured": 0.05956861471447949,
+      "expected": 0.0602,
+      "pass": true
+    },
+    {
+      "check": "Oracle G128 < G16",
+      "measured": 0.03371988613568194,
+      "expected": 0.0441,
+      "pass": true
+    },
+    {
+      "check": "Oracle < Greedy",
+      "measured": 0.03371988613568194,
+      "expected": 0.05956861471447949,
+      "pass": true
+    },
+    {
+      "check": "Avg candidates \u2248 128",
+      "measured": 114.5,
+      "expected": 128,
+      "pass": "True"
+    },
+    {
+      "check": "Utterance count",
+      "measured": 2939,
+      "expected": null,
+      "pass": true
+    },
+    {
+      "check": "Total ref words",
+      "measured": 52343,
+      "expected": null,
+      "pass": true
+    },
+    {
+      "check": "No empty candidates",
+      "measured": 0,
+      "expected": 0,
+      "pass": true
+    }
+  ]
+}
