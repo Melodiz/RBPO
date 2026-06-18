@@ -65,3 +65,17 @@ texput.log
 # Report build artifacts
 report/
 reports/
+
+# paper/ LaTeX build intermediates (keep paper.pdf, figures/, and sources)
+paper/*.aux
+paper/*.log
+paper/*.blg
+paper/*.bbl
+paper/*.out
+paper/*.toc
+paper/missfont.log
+
+# Internal working files — keep local, out of the public CV-facing repo
+CLAUDE.md
+NOTES_FOR_AUTHOR.md
+RBPO_Final.pdf

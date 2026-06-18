@@ -1,0 +1,19 @@
+# Core dependencies for scoring, analysis, and figure regeneration (Python 3.11).
+# Version floors are conservative; the project was developed against recent
+# 2024-era releases of these packages.
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+torch>=2.0
+transformers>=4.30        # RoBERTa PLL, GPT-2 LL, DistilBERT reranker
+sentencepiece>=0.1.99     # BPE-500 tokenizer
+editdistance>=0.6         # WER / CER edit distance
+jiwer>=3.0                # WER evaluation
+tqdm>=4.65
+pytest>=7.0               # tests under rbpo/tests
+
+# NOT pip-installable — required only for N-best *generation* from audio:
+#   k2        https://github.com/k2-fsa/k2
+#   icefall   https://github.com/k2-fsa/icefall   (clone + add to PYTHONPATH)
+#   lhotse    https://github.com/lhotse-speech/lhotse
+# Reranking, analysis, and figure regeneration do not need these.
