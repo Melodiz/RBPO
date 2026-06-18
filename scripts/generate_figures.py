@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate publication-quality figures for the RBPO paper.
-Reads source data from results/ and writes PDFs to report/figures/.
+Reads source data from results/ and writes vector PDFs to paper/figures/.
 Usage:
     python scripts/generate_figures.py \
         --data-dir /path/to/RBPO \
@@ -22,6 +22,10 @@ from matplotlib.patches import FancyBboxPatch
 
 plt.rcParams.update({
     'font.family': 'serif',
+    # Times-like fonts to match the paper body; STIXGeneral/stix ship with
+    # matplotlib, so this is reproducible with no missing-font fallback.
+    'font.serif': ['STIXGeneral', 'Times New Roman', 'Times', 'DejaVu Serif'],
+    'mathtext.fontset': 'stix',
     'font.size': 9,
     'axes.titlesize': 10,
     'axes.labelsize': 9,
@@ -306,7 +310,7 @@ def fig4_g_scaling(data_dir, out_dir):
     ax.set_ylabel('WER (%)')
     ax.set_ylim(3.0, 6.6)
     ax.legend(loc='lower left', handlelength=2.2)
-    ax.set_title('Figure 4: WER vs beam size $G$ on dev-other', pad=3)
+    # No in-figure title: the LaTeX \caption is the single source of truth.
 
     # Annotation: interp plateau (point clearly above any line)
     ax.annotate('Interp plateaus\naround G=16',
@@ -398,8 +402,7 @@ def fig5_tau_sweep(data_dir, out_dir):
     ax.legend(loc='upper right', fontsize=6.8, handlelength=1.6,
               frameon=True, framealpha=0.88, edgecolor='0.75')
 
-    ax.set_title(r'Figure 6: WER vs temperature $\tau$ ($G=128$)',
-                 fontsize=9, pad=4)
+    # No in-figure title: the LaTeX \caption is the single source of truth.
     clean_ax(ax)
     fig.tight_layout()
     out = os.path.join(out_dir, 'fig5_tau_sweep.pdf')
@@ -454,8 +457,7 @@ def fig6_spearman_rho(data_dir, out_dir):
     ax.set_xlim(3.0, 230)   # extended right to give room for inline labels
     ax.legend(loc='upper right', handlelength=2.0, ncol=2,
               fontsize=7.0, framealpha=0.85, edgecolor='0.75')
-    ax.set_title(
-        'Figure 5: CTC ranking degrades with $G$; PLL stays stable', pad=3)
+    # No in-figure title: the LaTeX \caption is the single source of truth.
 
     # Inline end-of-line labels  --  placed right of G=128, no arrows, no overlap
     ax.text(136, ctc_rho[-1] + 0.01, '<- 53% drop', ha='left', va='center',
@@ -550,10 +552,7 @@ def fig7_cross_condition(data_dir, out_dir):
     ax.set_yticklabels(labels, fontsize=8.0)
     ax.set_xlabel('WER change vs greedy (pp;  negative = improvement)')
     ax.set_xlim(-0.95, 0.22)
-    ax.set_title(
-        'Figure 7: MBR-CER+PLL across all evaluation conditions\n'
-        '(paired bootstrap, $B=10{,}000$, seed 42)',
-        pad=3)
+    # No in-figure title: the LaTeX \caption is the single source of truth.
     ax.invert_yaxis()
     clean_ax(ax)
     ax.spines['left'].set_visible(False)
@@ -563,6 +562,57 @@ def fig7_cross_condition(data_dir, out_dir):
     fig.savefig(out, bbox_inches='tight')
     plt.close(fig)
     print(f'  Saved {os.path.basename(out)}')
+    return out
+
+def fig_teaser(data_dir, out_dir):
+    """Dedicated page-1 teaser: the CTC-vs-PLL ranking-quality divergence, the
+    paper's central mechanism. Two scorers only (a clean banner, distinct from the
+    four-scorer Fig. 6); no in-figure title (the LaTeX \\caption frames it)."""
+    rows = read_csv(os.path.join(
+        data_dir, 'results/g_scaling/scaling_spearman.csv'))
+    Gs = sorted(set(int(r['G']) for r in rows))
+
+    def get_scorer(scorer):
+        by_g = {int(r['G']): r for r in rows if r['scorer'] == scorer}
+        return [-float(by_g[g]['rho']) for g in Gs]   # |rho|
+
+    ctc = get_scorer('ctc')
+    pll = get_scorer('roberta_pll')
+
+    fig, ax = plt.subplots(figsize=(6.75, 2.6))
+    # Shade the gap between the two scorers: the linguistic signal CTC cannot see.
+    ax.fill_between(Gs, ctc, pll, color=C['sky'], alpha=0.18, zorder=1)
+    ax.plot(Gs, pll, color=C['blue'], ls='-', marker='o', ms=5, lw=1.9,
+            label='RoBERTa PLL (linguistic)', zorder=3)
+    ax.plot(Gs, ctc, color=C['red'], ls='-', marker='D', ms=5, lw=1.9,
+            label='CTC log-prob (acoustic)', zorder=3)
+
+    ax.set_xscale('log', base=2)
+    ax.set_xticks(Gs)
+    ax.set_xticklabels([str(g) for g in Gs])
+    ax.set_xlabel('Beam size $G$ (number of N-best candidates)')
+    ax.set_ylabel(r'$|\rho_\mathrm{Spearman}|$' + '\n(ranking quality)')
+    ax.set_ylim(0.15, 0.70)
+    ax.set_xlim(3.4, 360)
+    ax.legend(loc='lower left', fontsize=7.5, handlelength=1.8,
+              framealpha=0.9, edgecolor='0.75')
+
+    # Inline end-of-line labels (right of G=128), colour-matched to each line.
+    ax.text(150, ctc[-1], 'CTC collapses ($-$53%):\nacoustic ranking saturates',
+            va='center', ha='left', fontsize=6.8, color=C['red'],
+            fontfamily='serif')
+    ax.text(150, pll[-1], 'PLL holds ($-$21%):\nlinguistic signal stays',
+            va='center', ha='left', fontsize=6.8, color=C['blue'],
+            fontfamily='serif')
+
+    clean_ax(ax)
+    fig.tight_layout()
+    out = os.path.join(out_dir, 'fig_teaser.pdf')
+    fig.savefig(out, bbox_inches='tight')
+    # Also emit a raster copy for the GitHub README (Markdown can't inline a PDF).
+    fig.savefig(os.path.join(out_dir, 'fig_teaser.png'), bbox_inches='tight', dpi=200)
+    plt.close(fig)
+    print(f'  Saved {os.path.basename(out)} (+ .png)')
     return out
 
 CAPTIONS = {
@@ -678,9 +728,12 @@ def write_latex_includes(out_dir, generated):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data-dir',   default='/Users/melodiz/Desktop/RBPO')
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    parser.add_argument('--data-dir',   default=repo_root,
+                        help='repo root containing results/ (default: this clone)')
     parser.add_argument('--output-dir',
-                        default='/Users/melodiz/Desktop/RBPO/report/figures')
+                        default=os.path.join(repo_root, 'paper', 'figures'),
+                        help='where to write figure PDFs (default: paper/figures)')
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -704,6 +757,8 @@ def main():
          lambda: fig6_spearman_rho(args.data_dir, args.output_dir)),
         ('Fig 7: Cross-condition',
          lambda: fig7_cross_condition(args.data_dir, args.output_dir)),
+        ('Teaser: CTC-vs-PLL ranking divergence',
+         lambda: fig_teaser(args.data_dir, args.output_dir)),
     ]
 
     for desc, fn in tasks:
