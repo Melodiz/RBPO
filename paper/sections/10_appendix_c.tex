@@ -1,0 +1,67 @@
+\section{Detailed Method Discussions}
+
+This appendix contains extended discussions of methods summarized in the main text. All results use the LibriSpeech dev-other evaluation set ($n$=2864 utterances) unless otherwise noted.
+
+
+
+\subsection{CTC-Internal Scoring Method Details}
+
+The following three methods from §\ref{sec:exhaustion} (Table~\ref{tab:ctc-internal}) produced null results. Extended analysis is provided here; the main text reports one-sentence summaries.
+
+\subsubsection{MC-dropout analysis}
+
+An initial exploratory run found a single seed with MC-MBR
+WER 5.98\% — the best figure among all CTC-internal methods, apparently closing 10.3\% of the oracle
+gap. Five independent seeds were then run (seed $\in$ \{42, 123, 456, 789,
+1024\}) with $B$=10\,000 bootstrap for each. Zero of five seeds reached significance at $\alpha$=0.05;
+$p$-values ranged from 0.27 to 0.77; three of five seeds produced WER above greedy. The
+Zipformer-S architecture contains one dropout layer in the CTC projection head ($p$=0.1). All encoder
+computation is deterministic at inference. Averaging $T$ stochastic projections of the same
+deterministic encoder output yields marginal posterior smoothing, but no new information enters the
+system. The effect direction is inconsistent across seeds; the null result holds.
+
+\subsubsection{Contrastive decoding on CR-CTC}
+
+The contrastive decoding variant compared the model's standard forward pass against a run
+on SpecAugment-masked \cite{park2019specaugment} input features, subtracting the masked log-probabilities from the standard
+ones. Every value $\alpha > 0$ degraded WER monotonically, reaching 7.14\% at $\alpha$=1.0. CR-CTC
+is specifically trained for output consistency under augmentation \cite{huang2024crctc}: the masked
+run therefore does not behave as a qualitatively different ``amateur'' that makes distinct errors. It
+produces the same predictions with added noise. Subtracting noise from signal reduces the signal, and
+the blank token — dominant in CTC frame distributions and most consistent under masking — is penalised
+disproportionately. This is a fundamental incompatibility between the contrastive method's premise
+and CR-CTC's training objective, not a tuning failure.
+
+\subsubsection{MLP rescorer}
+
+The 14-feature MLP rescorer used CTC log-probability variants, hypothesis length
+statistics, and inter-candidate agreement scores. Its best configuration
+produced WER 6.05\%. Cross-validation on train-clean-100 achieved $R^2$=0.76, confirming strong
+in-distribution discriminability. The learned mapping did not transfer to per-utterance candidate
+ranking on dev-other because the training criterion — predicting WER distribution across utterances —
+does not match the evaluation criterion, which requires ranking within individual utterances.
+
+
+
+\subsection{DistilBERT MWER Reranker Training Details}
+
+A DistilBERT discriminative reranker \cite{sanh2019distilbert} was trained with MWER loss on LibriSpeech train-clean-100 (28,539 utterances $\times$ 16 candidates) and evaluated on dev-other at $G$=128.
+
+\textbf{Training convergence.} MWER loss fell from 23.4~pp (random initialization) to 1.26~pp
+over 16,050 steps, and held-out validation WER on train-clean-100 fell from 25.2\% to 1.22\%.
+Training converged as expected on the training distribution.
+
+\textbf{Evaluation.} On dev-other, every configuration using the trained reranker was statistically significantly
+worse than the MBR-CER+PLL baseline ($p$=1.000 for all; 95\%\ CIs uniformly positive). The
+optimal mixing weight in the MBR posterior sweep was $\beta$=0, meaning the system discarded the
+reranker entirely and reverted to pure PLL. The best reranker-using configuration — three-way
+argmax with CTC ($\alpha$=0.6), reranker ($\beta$=0.2), and PLL ($\gamma$=0.2) — produced 5.79\%,
+trailing the MBR+PLL baseline by 0.26~pp.
+
+\textbf{Mechanism.} On train-clean-100, greedy WER is 1.09\% and the greedy-oracle gap is 0.007~pp: there is
+essentially no contrast between good and bad hypotheses for MWER to learn from. The reranker
+learns to demote orthographically irregular candidates (the $G$=16 training N-best included
+strings like ``afle shutot ran outed'') while recognizing acoustically realistic transcription
+errors on dev-other as valid-looking text. PLL, trained on 160~GB of English, already captures
+the available text-only discriminative signal. A DistilBERT model fine-tuned for five epochs on
+28K ASR utterances without acoustic grounding adds nothing to that signal.

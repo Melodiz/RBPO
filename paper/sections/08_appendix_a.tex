@@ -1,0 +1,183 @@
+\section{Full Results Tables}
+
+This appendix presents extended versions of the two inline tables from the main text and the
+complete MWER training trajectories for all five model configurations.
+
+
+
+\subsection{Master Results Table}
+
+Table~\ref{tab:master-full} extends Table~\ref{tab:cross-condition} in §6.1 with 95\% confidence
+intervals. All results use MBR-CER + RoBERTa PLL ($\tau$=10) with zero retuning across conditions.
+Statistics: paired bootstrap, $B$=10\,000, seed=42, all comparisons against greedy decoding. Gap
+closure is $(W_{\text{greedy}} - W_{\text{MBR}}) / (W_{\text{greedy}} - W_{\text{oracle}})$.
+VoxPopuli WERs are punctuation-stripped (§B.3); raw values are greedy 21.93\%, oracle 21.51\%,
+MBR 21.97\%.
+
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{Full results: MBR-CER\,+\,RoBERTa PLL ($\tau$=10) vs greedy across all evaluation
+conditions, with 95\% bootstrap confidence intervals. Paired bootstrap, $B$=10\,000, seed=42.
+n.s.\ = $p>0.05$. VoxPopuli punct-stripped (§B.3).
+The test-other $G$=16 condition (§6.1) is reported inline only and not duplicated here.
+$^{\dagger}$MUSAN 0\,dB: the corpus-level WER delta is driven by a few high-error utterances; the
+paired bootstrap CI reflects the per-utterance resampling distribution and shows no consistent direction.}
+\label{tab:master-full}
+\begin{tabular}{llrrrrrrr}
+\hline
+Condition & $G$ & Greedy & Oracle & MBR+PLL & $\Delta$ & $p$ & 95\% CI & Gap cl. \\
+ & & (\%) & (\%) & (\%) & (pp) & & (pp) & (\%) \\
+\hline
+\multicolumn{9}{l}{\textit{In-domain — LibriSpeech}} \\
+dev-clean    & 16  & 2.37  & 1.54  & 2.28  & $-$0.09 & 0.008    & [$-$0.16,\;$-$0.02] & 10.3 \\
+dev-other    & 16  & 6.02  & 4.44  & 5.79  & $-$0.23 & $<$0.0001 & [$-$0.33,\;$-$0.14] & 14.7 \\
+dev-other    & 128 & 6.02  & 3.53  & 5.53  & $-$0.49 & $<$0.0001 & [$-$0.59,\;$-$0.40] & 19.8 \\
+test-other   & 128 & 5.96  & 3.37  & 5.42  & $-$0.54 & $<$0.0001 & [$-$0.63,\;$-$0.44] & 20.7 \\
+\hline
+\multicolumn{9}{l}{\textit{Cross-architecture — Zipformer-M 65M (LibriSpeech dev-other)}} \\
+Zipformer-M  & 16  & 4.78  & 3.44  & 4.56  & $-$0.22 & $<$0.0001 & [$-$0.30,\;$-$0.14] & 16.5 \\
+Zipformer-M  & 128 & 4.78  & 2.73  & 4.43  & $-$0.34 & $<$0.0001 & [$-$0.42,\;$-$0.27] & 16.8 \\
+\hline
+\multicolumn{9}{l}{\textit{Out-of-domain}} \\
+TED-LIUM 3   & 16  & 11.30 & 9.16  & 10.97 & $-$0.33 & $<$0.0001 & [$-$0.50,\;$-$0.17] & 15.6 \\
+TED-LIUM 3   & 128 & 11.30 & 7.51  & 10.57 & $-$0.73 & $<$0.0001 & [$-$0.88,\;$-$0.58] & 19.2 \\
+VoxPopuli    & 128 & 18.29 & 17.97 & 18.33 & $+$0.04 & n.s.       & ---                  & ---  \\
+\hline
+\multicolumn{9}{l}{\textit{Noise robustness — MUSAN additive noise on LibriSpeech dev-other ($G$=16)}} \\
+MUSAN 20\,dB & 16  & 6.62  & 4.89  & 6.38  & $-$0.24 & 0.006 & [$-$0.25,\;$-$0.03] & 13.9 \\
+MUSAN 10\,dB & 16  & 8.04  & 6.26  & 7.80  & $-$0.24 & 0.003 & [$-$0.28,\;$-$0.05] & 13.5 \\
+MUSAN\;\,5\,dB  & 16  & 11.10 & 9.06  & 10.84 & $-$0.27 & 0.001 & [$-$0.29,\;$-$0.07] & 13.0 \\
+MUSAN\;\,0\,dB$^{\dagger}$  & 16  & 17.88 & 15.57 & 17.64 & $-$0.23 & 0.646 & [$-$0.10,\;$+$0.14] & ---  \\
+\hline
+\end{tabular}
+\end{table*}
+
+Eleven of 13 conditions are significant at $\alpha$=0.05. VoxPopuli fails through coverage:
+91.5\% of utterances are already greedy-optimal in the $G$=128 candidate set (oracle gap 0.31~pp),
+so no amount of reranking can help. At MUSAN~0~dB, candidate quality degrades under extreme acoustic noise; p=0.646 despite
+$\Delta$=$-$0.24~pp indicates that the per-utterance gain variance is very high. Both failures were
+predicted in §5.3 by the Spearman~$\rho$ divergence analysis.
+
+All confidence intervals: paired bootstrap, $B=10{,}000$, seed=42.
+
+
+
+\subsection{CTC-Internal Methods: Extended Table with Confidence Intervals}
+
+Table~\ref{tab:ctc-internal-full} reproduces the §5.1 inline table (Table~\ref{tab:ctc-internal})
+and adds 95\% bootstrap confidence intervals where available. Bootstrap CIs use
+$B$=10\,000, seed=42, $G$=16, $n$=2864 utterances. Eight methods were included in the primary bootstrap run; the remaining
+five are from individual experiment reports and do not have CIs.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{CTC-internal and acoustic-feature scoring methods at $G$=16, LibriSpeech dev-other
+(greedy WER 6.022\%). Paired bootstrap $B$=10\,000, seed=42. CI available for methods in the
+primary bootstrap run only. ${}^{*}$MBR-WER uses WER as both training utility and evaluation
+metric — result is circular; see §6.2 for discussion.}
+\label{tab:ctc-internal-full}
+\begin{tabular}{lrrrr}
+\hline
+Method & WER (\%) & $\Delta$ (pp) & $p$ & 95\% CI (pp) \\
+\hline
+Greedy (baseline)                     & 6.022         & 0.000    & ---       & --- \\
+Argmax $P_{\text{CTC}}$               & 6.022         & 0.000    & 1.000     & [0.00,\;0.00] \\
+Length-norm (tokens)                   & 6.022         & 0.000    & 0.652     & [$-$0.01,\;$+$0.01] \\
+Length-norm (chars)                    & 6.022         & 0.000    & 1.000     & [0.00,\;0.00] \\
+MBR-WER ($\tau$=1)$^{*}$             & 6.022         & 0.000    & 1.000     & [0.00,\;0.00] \\
+MBR-CER ($\tau$=1)                    & 6.028         & $+$0.006 & 1.000     & [0.00,\;$+$0.02] \\
+Self-consistency (uniform)             & 6.040         & $+$0.018 & 0.721     & [$-$0.05,\;$+$0.08] \\
+MBR-CER ($\tau$=50, best CTC-only)    & 5.987         & $-$0.035 & 0.163     & [$-$0.10,\;$+$0.03] \\
+\hline
+Contrastive decoding ($\alpha$=0.1)   & 6.071         & $+$0.049 & ---       & --- \\
+MC-dropout ($T$=4, 5 seeds)           & $6.030\pm0.020$ & $+$0.008 & 0/5 sig.\ & --- \\
+14-feature MLP rescorer               & 6.050         & $+$0.028 & ---       & --- \\
+3-gram shallow fusion ($\alpha$=0.9)  & 6.018         & $-$0.004 & 0.368     & --- \\
+Encoder value head                    & 6.020         & $-$0.002 & ---       & --- \\
+\hline
+\end{tabular}
+\end{table*}
+
+The confidence intervals make the null result precise: every method with a CI covering zero
+cannot be distinguished from greedy at any standard significance threshold. MBR-CER at $\tau$=50
+is the strongest CTC-only result ($\Delta$=$-$0.035~pp, 95\%\ CI [$-$0.10, $+$0.03]) yet
+remains non-significant. The encoder value head and 3-gram results lack CIs but have $p$$>$0.1
+from their individual reports. The contrastive, MLP, and MC-dropout methods were not included in
+the primary bootstrap because corpus-level metrics (contrastive, MLP) or seed-level variance
+(MC-dropout) make a single bootstrap uninformative.
+
+
+
+\subsection{MWER Training Trajectories}
+
+Tables~\ref{tab:mwer-crctc} and~\ref{tab:mwer-stdctc} give complete training trajectories for
+all MWER and distillation runs. All CR-CTC experiments start from the same frozen checkpoint
+(training-pipeline baseline 6.67\% on dev-other; see §4.1 for the 6.67\%\,vs.\,6.02\%
+discrepancy due to fbank computation). The standard CTC experiment starts from a different
+checkpoint (training-pipeline baseline 7.07\%). All $\Delta$ values are computed within-pipeline
+against each experiment's own baseline.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{CR-CTC MWER training trajectories (dev-other WER). All four configurations start from
+the same baseline (6.67\%). Subset configurations (MWER-unclipped-subset, MWER-clipped-subset): 10 epochs on train-clean-100 subset (${\sim}248$ steps/epoch). Full-data configurations (MWER-unclipped-full, MWER-clipped-full): 1 epoch on full train-clean-100 (7132 steps). Clipped = GRPO-style importance-ratio clipping. Baseline $\Delta$=0 by definition.}
+\label{tab:mwer-crctc}
+\begin{tabular}{lrrrr}
+\hline
+Epoch & Unc.-subset & Clip.-subset & Unc.-full & Clip.-full \\
+ & WER\,(\%) & WER\,(\%) & WER\,(\%) & WER\,(\%) \\
+\hline
+0 (baseline) & 6.67 & 6.67 & 6.67 & 6.67 \\
+1            & 8.53 & 8.48 & 15.30 & 15.57 \\
+2            & 8.31 & 8.94 & ---   & ---   \\
+3            & 9.22 & 9.31 & ---   & ---   \\
+4            & 9.62 & 9.80 & ---   & ---   \\
+5            & 9.99 & 10.44 & ---   & ---   \\
+6            & 11.11 & 10.95 & ---   & ---   \\
+7            & 11.29 & 11.55 & ---   & ---   \\
+8            & 12.32 & 12.49 & ---   & ---   \\
+9            & 13.43 & 13.31 & ---   & ---   \\
+10           & 13.49 & 12.85 & ---   & ---   \\
+\hline
+$\Delta$ final & $+$6.82\,pp & $+$6.18\,pp & $+$8.63\,pp & $+$8.90\,pp \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table}[h!]
+\centering
+\small
+\caption{Standard CTC MWER trajectory (dev-other WER, ${\sim}$40\% of one epoch). Baseline
+7.07\%; all evaluations use the same greedy decoding pipeline. The monotonic drift is qualitatively
+distinct from the CR-CTC catastrophic collapse: no phase transition, linear increase, endpoint
++3.4\% relative.}
+\label{tab:mwer-stdctc}
+\begin{tabular}{rrr}
+\hline
+Step & WER (\%) & $\Delta$ (pp) \\
+\hline
+0    & 7.07 & $+$0.00 \\
+500  & 7.12 & $+$0.05 \\
+1000 & 7.14 & $+$0.07 \\
+1500 & 7.21 & $+$0.14 \\
+2000 & 7.25 & $+$0.18 \\
+2500 & 7.31 & $+$0.24 \\
+3000 & 7.31 & $+$0.24 \\
+\hline
+\end{tabular}
+\end{table}
+
+The CR-CTC trajectories (Table~\ref{tab:mwer-crctc}) share two properties: monotonic increase from
+epoch~1 and no sign of stabilization through epoch~10. Clipping (MWER-clipped-subset vs MWER-unclipped-subset) reduces the
+epoch-10 WER by 0.64~pp (12.85 vs 13.49\%) but does not flatten the trajectory or produce any
+epoch with lower WER than the previous one. Full-data runs (MWER-unclipped-full and MWER-clipped-full) collapse more severely
+in one epoch than the subset runs do in ten, confirming that more gradient steps accelerate the
+failure rather than correcting it.
+
+The standard CTC trajectory (Table~\ref{tab:mwer-stdctc}) drifts linearly at approximately
+0.08~pp per 1000 steps, reaching $+$0.24~pp total over 3000 steps. This behavior — slow linear
+drift without catastrophic phase transition — distinguishes the standard CTC failure mode (basin
+geometry, §4.4) from the CR-CTC failure mode (missing reward signal, §4.2).

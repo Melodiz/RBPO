@@ -1,0 +1,140 @@
+% ============================================================
+%  paper.tex — The Anatomy of the CTC Oracle Gap (preprint)
+%  De-branded ICML 2025 two-column style, compiled with pdfLaTeX.
+%  Build:  pdflatex paper && bibtex paper && pdflatex paper && pdflatex paper
+%  (or use the build.sh helper in this directory)
+% ============================================================
+\documentclass{article}
+
+% ---- input/font encoding (pdfLaTeX) ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% ---- figures, tables, typography ----
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% ---- hyperref BEFORE icml2025 (the style file hooks into it) ----
+\usepackage{hyperref}
+
+% ---- math ----
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% required by icml2025 + algorithmic interplay
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% ---- ICML 2025 visual style ----
+% [accepted] makes the style display author names (a preprint is not blind).
+% The venue chrome it would otherwise print is overridden below.
+\usepackage[accepted]{icml2025}
+
+% ============================================================
+%  DE-BRANDING (preprint mode): strip all ICML venue chrome.
+%  We keep the official icml2025.sty pristine and override its hooks here.
+%  - The page-1 "appearing in / under review" notice -> "Preprint."
+%  - Neutralize PDF metadata (no "Proceedings of ICML ..." subject).
+%  This paper is a preprint; it is not submitted to or accepted at any venue.
+% ============================================================
+\makeatletter
+\renewcommand{\ICML@appearing}{Preprint.}
+\renewcommand{\Notice@String}{Preprint.}
+\makeatother
+
+% ---- font fallback ----
+% ICML's \usepackage{times} maps \ttfamily -> Courier (pcr) and \sffamily ->
+% Helvetica (phv); those URW metrics are absent on minimal TeX installs. Keep
+% Times for the body (the ICML look) and use Latin Modern (T1-native, ubiquitous)
+% for typewriter and sans, so the source compiles cleanly everywhere.
+\renewcommand{\ttdefault}{lmtt}
+\renewcommand{\sfdefault}{lmss}
+
+% The ICML style + hyperref emit each float anchor twice ("duplicate destination"
+% warnings). Sequential (non-counter) anchor names suppress the collisions; \ref
+% links remain correct (the paper uses no \autoref/\nameref).
+\hypersetup{hypertexnames=false}
+
+% ---- running head (short form of the title) ----
+\icmltitlerunning{The Anatomy of the CTC Oracle Gap}
+
+\begin{document}
+
+\twocolumn[
+\icmltitle{The Anatomy of the CTC Oracle Gap:\\
+           Acoustic Exhaustion and Linguistic Recovery}
+
+% Solo author. Affiliation displayed because of the [accepted] option.
+\begin{icmlauthorlist}
+\icmlauthor{Ivan Novosad}{hse}
+\end{icmlauthorlist}
+
+\icmlaffiliation{hse}{Faculty of Computer Science, HSE University, Moscow, Russia}
+
+\icmlcorrespondingauthor{Ivan Novosad}{inovosad@hse.ru}
+
+\icmlkeywords{Connectionist Temporal Classification, Minimum Bayes Risk decoding,
+pseudo-log-likelihood, Rao-Blackwellization, sequence-level ASR training,
+N-best rescoring, word error rate, cross-condition generalization}
+
+\vskip 0.3in
+]
+
+% Print affiliation footnote + the (overridden) "Preprint." notice.
+\printAffiliationsAndNotice{}
+
+% Neutralize PDF metadata after the style file has set it.
+\hypersetup{
+  pdftitle={The Anatomy of the CTC Oracle Gap: Acoustic Exhaustion and Linguistic Recovery},
+  pdfauthor={Ivan Novosad},
+  pdfsubject={},
+  pdfkeywords={CTC, MBR decoding, pseudo-log-likelihood, ASR, N-best rescoring},
+}
+
+\begin{abstract}
+\input{sections/00_abstract}
+\end{abstract}
+
+% ---- Page-1 teaser figure ----
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_teaser.pdf}
+  \caption{\textbf{Where the CTC oracle gap lives.} Ranking quality (absolute
+  Spearman $\rho$ between scorer and per-utterance WER) versus beam size $G$ on
+  LibriSpeech dev-other. CTC log-probability degrades sharply as the candidate
+  set grows (blank-path proliferation), while RoBERTa pseudo-log-likelihood (PLL)
+  stays informative. This divergence is the mechanism behind the paper's central
+  finding: the near-converged CTC decoding bottleneck is \emph{linguistic, not
+  acoustic}. MBR decoding with a PLL posterior exploits it for a 9.0\% relative
+  WER reduction on held-out test-other.}
+  \label{fig:teaser}
+\end{figure*}
+
+% ---- Main text ----
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_theoretical_framework}
+\input{sections/04_training_time}
+\input{sections/05_decode_time_mbr}
+\input{sections/06_cross_condition}
+\input{sections/07_conclusion}
+
+% ---- Acknowledgements ----
+\section*{Acknowledgements}
+The author thanks Peter Lukianchenko (Faculty of Computer Science, HSE
+University) for supervising this research project. The problem studied here
+originated in a production CTC-ASR setting encountered during an industry
+internship.
+
+% ---- Bibliography ----
+\bibliography{references}
+\bibliographystyle{icml2025}
+
+% ---- Appendices (supplementary material) ----
+\appendix
+\input{sections/08_appendix_a}
+\input{sections/09_appendix_b}
+\input{sections/10_appendix_c}
+
+\end{document}

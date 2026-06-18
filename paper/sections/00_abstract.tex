@@ -1,0 +1,13 @@
+
+This paper investigates the limits of CTC-internal scoring for N-best hypothesis selection and identifies the information bottleneck that separates acoustic confidence from linguistic plausibility.
+
+Eleven CTC-internal and acoustic-feature scoring strategies — including MBR with CTC posteriors, MC-dropout, contrastive decoding, shallow fusion, and a trained encoder value head — produce no statistically significant WER improvement over greedy decoding on LibriSpeech dev-other at $G$=16 (all $p > 0.05$). The exhaustion is systematic: CTC's Spearman $\rho$ between hypothesis score and per-utterance WER degrades from $-$0.574 at $G$=4 to $-$0.270 at $G$=128, a 53\% loss in ranking quality driven by blank-path proliferation in larger candidate sets. This exhaustion result establishes that the discriminative capacity of CTC-internal representations is saturated — no reweighting or recombination of acoustic signals can close the oracle gap.
+
+As confirmation that the bottleneck is linguistic rather than acoustic, we show that introducing external linguistic information via MBR decoding breaks through it. MBR-CER decoding with a RoBERTa pseudo-log-likelihood posterior ($\tau$=10, $G$=128) achieves 5.42\% WER on held-out LibriSpeech test-other (greedy 5.96\%, $\Delta$=$-$0.535 pp, $p$$<$0.0001, 9.0\% relative). RoBERTa PLL $\rho$ degrades only 21\% over the same $G$=4$\to$128 range, maintaining discriminating power exactly where CTC loses it. Applied without retuning to two architectures (Zipformer-S/M), three domains (LibriSpeech, TED-LIUM 3, VoxPopuli), and four noise levels (MUSAN), the recipe produces statistically significant improvements in 11 of 13 conditions, with VoxPopuli and MUSAN at 0\,dB as the two predicted failure conditions where candidate quality degrades.
+
+On the training-time side, we establish that standard MWER training via the CTC forward-backward algorithm implements Rao-Blackwellized REINFORCE at the output projection (variance ${\sim}3\times$ below Viterbi, verified on 250 utterances). Despite this variance reduction, sequence-level fine-tuning fails at near-converged CTC checkpoints: all four MWER configurations on CR-CTC collapse (+6.18 to +8.90 pp WER) due to a training oracle gap of 0.007 pp that provides no usable reward signal.
+
+\textbf{Keywords:} Connectionist Temporal Classification, Minimum Bayes Risk decoding, pseudo-log-likelihood, Rao-Blackwellization, sequence-level ASR training, N-best rescoring, word error rate, cross-condition generalization
+
+
+

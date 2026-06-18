@@ -1,0 +1,11 @@
+% Minimal local compatibility package for the ICML 2025 style on TeX Live Basic.
+% Provides the \forloop macro used by icml2025.sty for affiliation printing.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{forloop}[2026/05/21 local minimal forloop compatibility]
+
+\RequirePackage{ifthen}
+
+\newcommand{\forloop}[4]{%
+  \setcounter{#1}{#2}%
+  \whiledo{#3}{#4\stepcounter{#1}}%
+}

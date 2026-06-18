@@ -1,0 +1,66 @@
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Problem Domain}
+
+Automatic speech recognition based on Connectionist Temporal Classification \cite{graves2006ctc} trains without frame-level alignment supervision and achieves competitive word error rates while decoding quickly. A CTC model outputs a distribution over vocabulary tokens at each encoder frame; the probability of a token sequence $y$ given acoustic input $x$ is computed by marginalizing over all valid frame-to-token alignments via the forward-backward algorithm. This marginalization is exact and runs in $O(T \cdot |y|)$ time. Conditional independence across output frames enables parallel decoding, and the model family competes with attention-based encoder-decoder systems while remaining simpler to deploy in latency-sensitive settings.
+
+Greedy decoding selects the argmax token at each encoder frame, then collapses consecutive duplicates and blanks. It is fast and exact in the per-frame MAP sense. It does not maximize the true sequence probability $P_\text{CTC}(y|x)$ after alignment marginalization: the per-frame argmax tokens need not compose into the most probable token sequence. The distance between greedy decoding and the best decoding the model can theoretically support is not negligible.
+
+On LibriSpeech dev-other \cite{panayotov2015librispeech}, a 22M-parameter Zipformer-S model \cite{yao2024zipformer} trained with the CR-CTC objective \cite{huang2024crctc} achieves 6.02\% WER under greedy decoding. The \textbf{oracle WER} is the WER of the best candidate per utterance in the N-best list; the \textbf{oracle gap} is greedy WER minus oracle WER — the maximum WER reduction achievable by perfect candidate selection. Drawing $G=16$ candidates via k2 lattice sampling \cite{li2022k2} yields an oracle WER of 4.44\% — an oracle gap of 1.58~pp. At $G=128$, the oracle reaches 3.53\%, an oracle gap of 2.49~pp. These are deterministic properties of the model and dataset, computed once with fixed parameters. The oracle gap is stable and reproducible. At $G=128$, it is 2.49~pp — larger than the absolute WER improvement this paper reports — which establishes both the scale of the opportunity and the difficulty of fully closing it.
+
+Better transcripts exist in the N-best list. Two strategies exist for finding them. The first is training: use a sequence-level objective that rewards WER reduction to modify the model parameters, exploiting the oracle gap as the available reward signal. The second is decoding: hold the model fixed and use information not available to the acoustic model to select a better candidate from the N-best list. CTC's separation of acoustic scoring from transcript selection makes both strategies feasible on the same frozen model.
+
+Both strategies are applied here to the same Zipformer-S CR-CTC checkpoint. Training fails; decoding succeeds. Section~\ref{sec:training} identifies why; Sections~\ref{sec:decoding} and~\ref{sec:cross_condition} document how much ground decoding recovers and where it runs out.
+
+
+
+\subsection{Informal Problem Statement}
+
+This paper asks a precise question: given a frozen CTC acoustic model, can WER be reduced by (a) sequence-level training on the model parameters, or (b) decision-theoretic decoding over the model's N-best output? The underlying analytical question is diagnostic: where does the information bottleneck lie — within the acoustic model's own representations, or at the boundary between acoustic and linguistic domains?
+
+On the training side, the RL framing provides analytical tools. A CTC model defines a distribution $P_\text{CTC}(y|x)$ over token sequences, which in the RL vocabulary is a stochastic policy $\pi_\theta(y|x)$ parameterized by model weights $\theta$. The REINFORCE algorithm \cite{williams1992} gives the gradient of expected reward as $\mathbb{E}_{y \sim \pi_\theta}\bigl[R(y)\,\nabla_\theta \log \pi_\theta(y)\bigr]$. Setting $R(y) = -\text{WER}(y, y^*)$ and approximating the expectation with a finite N-best list recovers the Minimum Word Error Rate (MWER) loss of \citet{prabhavalkar2018mwer}; mean-centered WER advantages over the list serve as the reward baseline. The functional-form identification is exact; the Rao-Blackwell variance property is established empirically in §3. Section~\ref{sec:theory} extends it: the CTC forward-backward algorithm that computes $\nabla_\theta \log P_\text{CTC}(y|x)$ implements a Rao-Blackwellized REINFORCE estimator, automatically providing variance reduction that any MWER practitioner already obtains without explicitly invoking the theorem.
+
+At decode time, the RL framing does not apply. With model parameters fixed, there is no policy to optimize. The problem is action selection under uncertainty — Bayesian decision theory. Minimum Bayes Risk (MBR) decoding \cite{kumar2004mbr} provides the formal solution: select the hypothesis minimizing expected loss under a posterior distribution over the N-best candidates. When the posterior incorporates external linguistic evidence, the MBR solution differs from the acoustic argmax. This is decision theory, not RL. Section~\ref{sec:theory} draws this boundary explicitly.
+
+Two questions follow: why does sequence-level training fail on near-converged CTC checkpoints, and — more diagnostically — what does the failure of CTC-internal scoring at decode time reveal about where the model's discriminative capacity ends?
+
+
+
+\subsection{Relevance and Novelty}
+
+LM rescoring for CTC is well-studied. Shallow fusion \cite{gulcehre2015fusion} combines acoustic and LM log-probabilities at each beam expansion step; applied to attention-based encoder-decoder ASR, it produces consistent WER reductions across languages and model sizes \cite{hori2017advances}. WFST-based decoding \cite{miao2015eesen} integrates n-gram models into the CTC search graph as a compiled grammar. Within the n-gram model class, this yields exact joint search. N-best rescoring \cite{mikolov2010recurrent,shin2019effective} runs an LM offline over a fixed candidate list and reranks by combined score. All three approaches assign a single value to each candidate and select the argmax; the decoding objective remains MAP.
+
+MBR decoding changes the objective. \citet{kumar2004mbr} introduce MBR for machine translation and show gains over MAP decoding on multiple benchmarks; the improvement is largest where probability mass spreads across near-equivalent hypotheses. \citet{eikema2020map} formalize the argument: MAP decoding is systematically misaligned with the output goal when the model distribution is diffuse. \citet{freitag2022high} scale MBR with learned neural utility functions, reporting substantial gains on NMT benchmarks. For ASR, \citet{goel2000mbr} apply MBR to acoustic lattices in hybrid HMM systems, but the posterior in that work derives entirely from the acoustic model and carries no external linguistic signal. The closest precedent for this work is \citet{finkelstein2024mbr} in NMT, which replaces the LM score with a neural loss function $L$; we change the posterior $Q$ itself and operate in the CTC ASR domain.
+
+\citet{salazar2020pll} introduce pseudo-log-likelihood (PLL) for masked language model scoring: each token position is individually masked, and the sum of per-position log-probabilities under the masked contexts provides a sentence-level score. As \citet{salazar2020pll} show, PLL correlates with human grammaticality judgments and outperforms autoregressive scores on acceptability benchmarks. Prior ASR work uses PLL as a drop-in score in an argmax pipeline, selecting the highest-PLL candidate. This work uses PLL to construct the MBR posterior: PLL defines the probability distribution over candidates from which MBR computes expected loss.
+
+The combination of masked-LM posteriors with an MBR objective over CTC N-best candidates does not appear in the prior literature. Three findings emerge from this investigation.
+
+\textit{(1) Exhaustion of CTC-internal scoring.} Eleven scoring strategies derivable from CTC posteriors, encoder features, or their combinations produce no statistically significant WER improvement over greedy. The Spearman $\rho$ divergence between CTC and PLL ranking quality as beam size grows provides the mechanistic explanation: CTC's discriminative capacity degrades under blank-path proliferation while PLL remains stable. This establishes that the bottleneck is linguistic, not acoustic.
+
+\textit{(2) External information breaks the bottleneck.} MBR decoding with RoBERTa \cite{liu2019roberta} PLL as the posterior and CER as the loss function achieves a 9.0\% relative WER reduction on held-out test-other. The same recipe transfers without modification to two architectures (Zipformer-S and Zipformer-M), three domains (LibriSpeech, TED-LIUM~3 \cite{hernandez2018tedlium3}, VoxPopuli \cite{wang2021voxpopuli}), and four noise levels (MUSAN \cite{snyder2015musan}), reaching significance in 11 of 13 conditions.
+
+\textit{(3) Analysis of MWER failure.} A $2\times2$ outcome matrix covers two model types (CR-CTC and standard CTC) and two training objectives (MWER and supervised distillation). All four cells fail; the analysis identifies two distinct failure mechanisms and establishes the boundary conditions under which sequence-level fine-tuning at near-converged CTC checkpoints could succeed.
+
+
+
+\subsection{Results Summary}
+
+\textbf{Training-time (Section~\ref{sec:training}).} All four MWER training configurations on the CR-CTC checkpoint degrade WER monotonically: degradation ranges from $+6.18$ to $+8.90$~pp on dev-other. The cause is a near-zero training oracle gap of 0.007~pp — the model already transcribes training data near-perfectly, so the REINFORCE gradient tracks noise rather than a reward signal. MWER on a standard CTC checkpoint does not produce catastrophic collapse but still fails: a mild upward drift of $+3.4\%$ over 3000 steps, despite a training oracle gap 106$\times$ larger than CR-CTC's. Best-of-N supervised distillation (RAFT) on the same checkpoint collapses at lr$=10^{-6}$ (WER rises from 4.86\% to 65.5\% by step 800) and is frozen at lr$=10^{-7}$ and lr$=10^{-8}$; the collapse boundary lies within one order of magnitude. The behavior is consistent with a sharp basin in the loss surface around the pretrained optimum. The $2\times2$ outcome matrix in Section~\ref{sec:training} summarizes: two model types, two training objectives, four cells, no positive results, two distinct failure mechanisms.
+
+\textbf{Decode-time (Sections~\ref{sec:decoding}–\ref{sec:cross_condition}).} Eleven CTC-internal and acoustic-feature scoring strategies produce no statistically significant WER improvement at $G=16$ (all $p > 0.05$). The information bottleneck lies between CTC and the linguistic domain. MBR-CER decoding with a RoBERTa PLL posterior at temperature $\tau=10$ achieves 5.42\% WER on the held-out LibriSpeech test-other split at $G=128$ (greedy 5.96\%, $\Delta=-0.535$~pp, $p < 0.0001$, 95\% CI~$[-0.629,\,-0.441]$~pp). This is a 9.0\% relative reduction from the greedy baseline, confirmed on held-out data with no hyperparameter adjustment. The effect strengthens on test-other relative to dev-other, a pattern inconsistent with development-set overfitting. The result confirms the information-bottleneck hypothesis: when external linguistic information is introduced, the CTC-internal ceiling no longer holds.
+
+The absolute number alone does not capture cross-condition transferability. The same recipe — temperature $\tau=10$, CER utility, $G=128$ — applies without modification to two Zipformer architectures, three domains, and four additive noise levels. Statistically significant improvements appear in 11 of 13 conditions tested. The two failures are VoxPopuli (coverage collapse: 91.5\% of utterances already greedy-optimal) and MUSAN at 0~dB (candidate quality degrades under extreme noise). Both failures are predicted by the mechanistic analysis in Section~\ref{sec:decoding} before those experiments ran. The recipe requires no per-condition adaptation; this transferability across the 11 conditions where candidate quality permits is the claim this paper defends. The master results table in Section~\ref{sec:cross_condition} presents the full evidence.
+
+
+
+\subsection{Paper Structure}
+
+Related work (§2) surveys CTC decoding, LM rescoring, MBR in MT and ASR, and sequence-level training; the specific combination motivating this work does not appear in any of these threads. The theoretical framework (§3) derives the CTC alignment posterior $\gamma_t$, identifies MWER training as Rao-Blackwellized REINFORCE (variance ${\sim}3\times$ below Viterbi, verified on 250 utterances), and verifies two variance-bounding propositions on up to 2{,}864 dev-other utterances before making the transition from training-time analysis to decode-time decision theory.
+
+The training experiments (§4) are organized around a $2\times2$ outcome matrix; §5 documents the exhaustion of CTC-internal scoring, introduces external LM posteriors, and explains the Spearman $\rho$ divergence behind the MBR-vs-interpolation scaling asymmetry; §6 validates the recipe across 13 conditions and reports four diagnostics. §7 synthesizes the findings.
+
+
+
+

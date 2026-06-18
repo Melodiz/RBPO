@@ -1,0 +1,47 @@
+\section{Conclusion}
+
+Taken together, §§3–6 answer the questions posed in §1.2. No new evidence is introduced here.
+
+
+
+\subsection{Positive Results}
+
+On the held-out LibriSpeech test-other split at $G=128$, MBR-CER decoding with a RoBERTa PLL posterior at $\tau=10$ achieves 5.42\% WER against a greedy baseline of 5.96\% ($\Delta=-0.535$~pp, $p < 0.0001$, 95\% CI~$[-0.629,\,-0.441]$~pp, Section~\ref{sec:cross_condition}). The 9.0\% relative reduction holds on held-out data with no hyperparameter adjustment and no modification to the acoustic model. The WER reduction is 0.535~pp on test-other versus 0.493~pp on dev-other: the recipe does not degrade at the held-out boundary.
+
+Eleven of thirteen cross-condition tests confirm significance without any hyperparameter adjustment. The same recipe — temperature $\tau=10$, CER loss, $G=128$ — ran without modification across two Zipformer architectures, three domains, and four noise levels: Zipformer-M achieves 4.43\% at $G=128$ (greedy 4.78\%, $p < 0.0001$); TED-LIUM~3 achieves 10.57\% at $G=128$ (greedy 11.30\%, $p < 0.0001$); MUSAN at 20, 10, and 5~dB all reach significance ($p \leq 0.006$, gap closure 13.0–13.9\%). The master results table in Section~\ref{sec:cross_condition} presents the full evidence.
+
+At $G=4$, CTC and PLL ranking quality are nearly equal (Spearman $\rho \approx -0.57$ each); by $G=128$, CTC has degraded substantially while PLL retains most of its discriminating power (Table~\ref{tab:spearman}). This G-scaling asymmetry, documented in Section~\ref{sec:decoding}, is the most informative empirical pattern. Near-duplicate lattice paths proliferate at larger beam sizes; CTC assigns them different scores (noise-driven), PLL assigns them identical scores (blank-invariant). Consequently, linear interpolation plateaus at approximately 5.89\% from $G=8$ onward while MBR continues improving through $G=128$. The divergence also predicts the two failures in Section~\ref{sec:cross_condition}: candidate quality degrades in exactly the conditions where the recipe fails.
+
+The theoretical framework from Section~\ref{sec:theory} establishes that CTC backward implements a Rao-Blackwellized REINFORCE estimator at the output projection, with variance reduction $2.96\times$ over Viterbi and $3.87\times$ over sampled single-path estimators (verified on 250 utterances, zero core ordering violations). Proposition~1 (MBR posterior-loss variance does not exceed greedy's) holds per utterance on 498 utterances at $G$=8 and on all 2{,}864 utterances at $G$=128, with zero violations. The encoder value head in Section~\ref{sec:decoding} assigns weight zero to acoustic features beyond the CTC log-probability, a pattern consistent with both propositions and with the Rao-Blackwell sufficiency result.
+
+As a side-finding, CR-CTC improves hypothesis ranking calibration beyond accuracy. The anti-correlated Spearman $\rho$ fraction drops from 15.7\% (standard CTC) to 6.9\% (CR-CTC), and the rank correlation on the recoverable subset improves from $-0.118$ to $-0.241$ (Section~\ref{sec:training}).
+
+The MBR+PLL result is best understood as a diagnostic finding that confirms the information-bottleneck hypothesis rather than as a deployment recipe. The 9.0\% relative reduction demonstrates that external linguistic information can break through the CTC-internal ceiling — the bottleneck is in the representation, not in the decoding framework. This analytical conclusion holds regardless of the practical cost of the MBR pipeline.
+
+
+
+\subsection{Negative Results as Boundary Conditions}
+
+Four cells, two models, two gradient estimators, no positive result. The $2\times2$ outcome matrix in Section~\ref{sec:training} characterizes the boundary conditions precisely.
+
+CR-CTC's training oracle gap is 0.007~pp. The model already transcribes training data near-perfectly, so the REINFORCE gradient is noise rather than signal; all four MWER configurations collapse (+6.18 to +8.90~pp WER) in the first epoch. Standard CTC's training oracle gap is 0.74~pp — 106$\times$ larger. MWER on standard CTC avoids catastrophic collapse but still drifts upward (+3.4\% over 3000 steps). Switching to a cleaner gradient estimator does not help: RAFT on the same checkpoint collapses at lr$=10^{-6}$ (WER $4.86\% \to 65.5\%$ by step 800) or is frozen at lr$=10^{-7}$ and lr$=10^{-8}$; the collapse boundary lies within one order of magnitude. The two mechanisms are separable — missing reward for CR-CTC, behavior consistent with a sharp basin for standard CTC — and neither model satisfies both necessary conditions simultaneously.
+
+The information bottleneck result from Section~\ref{sec:decoding} extends the picture to decode time. Eleven CTC-internal scoring strategies produce no statistically significant WER improvement over greedy (all $p > 0.05$). The gap is between CTC and the linguistic domain, not within CTC. The DistilBERT reranker in Section~\ref{sec:cross_condition} instantiates the same boundary at decode time: trained on near-perfect transcripts, it learns to reproduce greedy rather than detect errors, and the optimal mixing weight is $\beta=0$.
+
+
+
+\subsection{Future Work}
+
+Three training-time directions follow from the failure analysis in Section~\ref{sec:training}. Applying MWER at a less-converged checkpoint — before training-set WER approaches the model's capacity ceiling — would provide a real training oracle gap. KL-anchored fine-tuning objectives such as DPO or IPO constrain parameter updates relative to the pretrained distribution and may address the sharp-basin problem directly. Supervised distillation from oracle N-best selections with a conservative learning rate and KL regularizer toward the pretrained policy is a more controlled alternative to RAFT.
+
+For decode-time, the 81\% selection error documented in Section~\ref{sec:cross_condition} identifies the dominant ceiling. An encoder-conditioned reranker that incorporates acoustic embeddings alongside text scores could close more of the selection gap; training it on utterances with a genuine WER reward signal — noisier speech, or earlier-checkpoint outputs — addresses the reward-sparsity failure from Section~\ref{sec:cross_condition}. Expanding the candidate set beyond $G=128$ and collecting oracle hypotheses more aggressively at larger beams are complementary steps. Broader directions include evaluation on morphologically rich languages such as Arabic or Turkish, where CER-based utility may expose qualitatively different error patterns; scaling to Zipformer-L; and replacing the pairwise CER sum with a differentiable surrogate for joint CTC-MBR training.
+
+
+
+\subsection{Summary}
+
+The central finding is diagnostic: CTC-internal scoring has exhausted its discriminative capacity at near-converged checkpoints. This is established by two converging lines of evidence — the systematic failure of eleven CTC-internal scoring strategies at decode time, and the failure of sequence-level training (which requires two conditions neither tested model satisfies simultaneously: a non-negligible training oracle gap and a flat enough loss basin). MBR decoding with external linguistic posteriors breaks through this ceiling — 11 of 13 cross-condition tests reach significance, and the 9.0\% relative reduction on held-out test-other holds without retuning. The G-scaling asymmetry, the selection-vs-coverage decomposition, and the reranker failure together confirm that the gap between CTC and oracle is dominated by linguistic information the acoustic model does not encode. PLL-weighted MBR provides one principled mechanism for recovering part of it, confirming that the bottleneck is representational rather than architectural.
+
+
+
+
