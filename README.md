@@ -14,10 +14,6 @@ reduction** on held-out LibriSpeech `test-other` — without touching the acoust
   <img src="https://img.shields.io/badge/python-3.11-3776ab" alt="python 3.11">
 </p>
 
-> RBPO is the project codename (the URL is cited in the paper); read it as the project name, not an
-> acronym to expand. This started as a Bachelor's research project at HSE University and is released
-> here as a **CV-facing preprint** plus a reproducible code/data repository.
-
 📄 **Preprint:** [`paper/paper.pdf`](paper/paper.pdf) · build it with `cd paper && ./build.sh` (pdfLaTeX).
 
 ---
@@ -150,7 +146,7 @@ Small figure-backing data (oracle/Spearman curves, MWER trajectories, bootstrap 
 in `results/` — see [`results/MANIFEST.md`](results/MANIFEST.md). The **large N-best and PLL JSONLs**
 (100 MB+ each) are kept out of git and live on Google Drive:
 
-> **Google Drive:** _link to be added by the author_ — see `NOTES_FOR_AUTHOR.md`.
+> **Full results:** [yandex disk](https://disk.yandex.ru/d/XqoNVk15hY0E6g)
 
 ---
 
