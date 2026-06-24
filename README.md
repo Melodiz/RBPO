@@ -8,13 +8,13 @@ reduction** on held-out LibriSpeech `test-other` — without touching the acoust
 <p align="center"><img src="paper/figures/fig_teaser.png" width="92%" alt="CTC vs PLL ranking-quality divergence"></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/preprint-PDF-b31b1b" alt="preprint">
+  <a href="https://arxiv.org/abs/2606.23306"><img src="https://img.shields.io/badge/arXiv-2606.23306-b31b1b.svg" alt="arXiv"></a>
   <img src="https://img.shields.io/badge/code-MIT-blue" alt="MIT">
   <img src="https://img.shields.io/badge/paper%20%26%20figures-CC--BY--4.0-lightgrey" alt="CC-BY-4.0">
   <img src="https://img.shields.io/badge/python-3.11-3776ab" alt="python 3.11">
 </p>
 
-📄 **Preprint:** [`paper/paper.pdf`](paper/paper.pdf) · build it with `cd paper && ./build.sh` (pdfLaTeX).
+📄 **Paper:** <https://arxiv.org/abs/2606.23306> · also in [`paper/paper.pdf`](paper/paper.pdf) (build with `cd paper && ./build.sh`).
 
 ---
 
@@ -144,7 +144,7 @@ python scripts/rerank_mbr.py      --nbest nbest_pll.jsonl --output mbr.json \
 
 Small figure-backing data (oracle/Spearman curves, MWER trajectories, bootstrap summaries) is tracked
 in `results/` — see [`results/MANIFEST.md`](results/MANIFEST.md). The **large N-best and PLL JSONLs**
-(100 MB+ each) are kept out of git and live on Google Drive:
+(100 MB+ each) are kept out of git and live on Yandex Disk:
 
 > **Full results:** [yandex disk](https://disk.yandex.ru/d/XqoNVk15hY0E6g)
 
@@ -153,12 +153,11 @@ in `results/` — see [`results/MANIFEST.md`](results/MANIFEST.md). The **large 
 ## Citation
 
 ```bibtex
-@misc{novosad2026ctcoraclegap,
-  title         = {The Anatomy of the CTC Oracle Gap: Acoustic Exhaustion and Linguistic Recovery},
-  author        = {Novosad, Ivan},
-  year          = {2026},
-  note          = {Preprint},
-  howpublished  = {\url{https://github.com/Melodiz/RBPO}}
+@article{novosad2026anatomy,
+  title   = {The Anatomy of the CTC Oracle Gap: Acoustic Exhaustion and Linguistic Recovery},
+  author  = {Novosad, Ivan},
+  journal = {arXiv preprint arXiv:2606.23306},
+  year    = {2026}
 }
 ```
 

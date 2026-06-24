@@ -15,7 +15,11 @@ authors:
     affiliation: "Faculty of Computer Science, HSE University"
 year: 2026
 repository-code: "https://github.com/Melodiz/RBPO"
-url: "https://github.com/Melodiz/RBPO"
+url: "https://arxiv.org/abs/2606.23306"
+identifiers:
+  - type: other
+    value: "arXiv:2606.23306"
+    description: "arXiv preprint"
 license: CC-BY-4.0
 keywords:
   - connectionist temporal classification
@@ -32,6 +36,10 @@ preferred-citation:
     - family-names: Novosad
       given-names: Ivan
       affiliation: "Faculty of Computer Science, HSE University"
+  journal: "arXiv preprint arXiv:2606.23306"
   year: 2026
-  notes: "Preprint"
-  url: "https://github.com/Melodiz/RBPO"
+  url: "https://arxiv.org/abs/2606.23306"
+  identifiers:
+    - type: other
+      value: "arXiv:2606.23306"
+      description: "arXiv preprint"
